@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FaBars } from "react-icons/fa";
 import { links } from "../Util/constanst";
-import CartButton from "../Components/CartButton";
+import CartButton from "../Components/Card/CartButton";
 const HeaderStyles = styled.div`
   /* Header */
   height: 5rem;

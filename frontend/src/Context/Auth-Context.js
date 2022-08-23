@@ -1,20 +1,26 @@
 import { createContext, useContext, useReducer } from "react";
 const AuthContext = createContext();
 
+//kho chứa các sản phẩm đã thêm
 const StoreProvider = (props) => {
   // giá trị khởi tạo
   const initialState = {
     cart: {
-      cartItems: [],
+      //Lưu vào
+      cartItems: localStorage.getItem("cartItem")
+        ? JSON.parse(localStorage.getItem("cartItem"))
+        : [],
+      //tương tự giống như dùng state : useState(JSON.parse(localStorage.getItem("cartItem") || [])
     },
   };
   //tạo hàm reducer
   const reducer = (state, action) => {
     switch (action.type) {
-      case "CART_ADD_ITEM":
-        // add to cart
-        // tránh lặp các sản phẩm trùng nhau đẫ add vào cart
+      // add to cart
+      case "CART_ADD_ITEM": {
+        //sản phẩm thêm mới
         const newItem = action.payload;
+        //sản phẩm hiện tại có trùng với sản phẩm thêm mới hay không
         const existItem = state.cart.cartItems.find(
           (item) => item._id === newItem._id
         );
@@ -23,14 +29,27 @@ const StoreProvider = (props) => {
               item._id === existItem._id ? newItem : item
             )
           : [...state.cart.cartItems, newItem];
+        localStorage.setItem("cartItem", JSON.stringify(cartItems));
         return { ...state, cart: { ...state.cart, cartItems } };
-      // return {
-      //   ...state,
-      //   cart: {
-      //     ...state.cart,
-      //     cartItems: [...state.cart.cartItems, action.payload],
-      //   },
-      // };
+      }
+      //remove cart
+      case "CART_REMOVE_ITEM": {
+        //dùng hàm filter xóa từng sản phẩm
+        const cartItems = state.cart.cartItems.filter(
+          (item) => item._id !== action.payload._id
+        );
+        //xóa trong local storage
+        localStorage.removeItem("cartItem");
+        return { ...state, cart: { ...state.cart, cartItems } };
+      }
+      //xóa tất cả các sản phẩm
+      case "CLEAR_ALL_ITEM": {
+        //xóa trong local storage
+        localStorage.removeItem("cartItem");
+        return { ...state, cart: { cartItems: [] } };
+      }
+
+      // default
       default:
         return state;
     }

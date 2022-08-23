@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Rating from "./Rating";
+import Rating from "../Rating";
 import { FaSearch } from "react-icons/fa";
 
 const ProductListStyles = styled.div`

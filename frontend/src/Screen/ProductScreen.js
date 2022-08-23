@@ -3,11 +3,12 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { initialState, reducer } from "../Reducer/reducerProduct";
 import styled from "styled-components";
-import ProductImage from "../Components/ProductImage";
+
 import Rating from "../Components/Rating";
-import AddToCart from "../Components/AddToCart";
 import PageHero from "../Components/PageHero";
 import Loading from "../Components/Loading";
+import AddToCart from "../Components/Card/AddToCart";
+import ProductImage from "../Components/Product/ProductImage";
 
 const Wrapper = styled.div`
   .product-center {
@@ -52,7 +53,6 @@ const Wrapper = styled.div`
 const ProductScreen = () => {
   const params = useParams();
   const { slug } = params;
-
   const [state, dispatch] = useReducer(reducer, initialState);
   const { products, loading, error } = state; //destructuring state
 
@@ -66,7 +66,7 @@ const ProductScreen = () => {
       } catch (err) {
         dispatch({ type: "FETCH_FAIL", payload: err.message });
       }
-      // setProducts(result.data);
+      // Tương tự khi sử dụng state : setState(result.data)
     };
     fetchData();
   }, [slug]);

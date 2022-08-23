@@ -1,9 +1,9 @@
 import React, { useEffect, useReducer } from "react";
-import { initialState, reducer } from "../Reducer/reducerProduct";
+import { initialState, reducer } from "../../Reducer/reducerProduct";
 import Product from "./Product";
 import axios from "axios";
 import styled from "styled-components";
-import Loading from "./Loading";
+import Loading from "../Loading";
 
 const Wrapper = styled.section`
   background: var(--clr-grey-10);

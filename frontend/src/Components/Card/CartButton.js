@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FaShoppingCart, FaUserPlus } from "react-icons/fa";
-import { useStore } from "../Context/Auth-Context";
+import { useStore } from "../../Context/Auth-Context";
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -64,9 +64,12 @@ const CartButton = () => {
         Cart
         <span className="cart-container">
           <FaShoppingCart />
-          <span className="cart-value">
-            {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
-          </span>
+          {cart.cartItems.length > 0 && (
+            <span className="cart-value">
+              {/* hiển tổng số lượng sản phẩm đã add bằng hàm reduce tính tổng */}
+              {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+            </span>
+          )}
         </span>
       </Link>
       <button type="button" className="auth-btn">
