@@ -17,6 +17,7 @@ const Wrapper = styled.main`
 const CartScreen = () => {
   const { state } = useStore();
   const { cart } = state;
+  //nếu mà không có sản phẩm 
   if (cart.cartItems.length === 0) {
     return (
       <Wrapper className="page-100">

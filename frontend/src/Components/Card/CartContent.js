@@ -41,7 +41,8 @@ const CartContent = () => {
   };
   return (
     <Wrapper className="section section-center">
-      <CartColumns />
+    {/* cột chứa danh sách */}
+      <CartColumns /> 
       {cart.cartItems.map((item) => (
         <CartItem key={item._id} data={item} />
       ))}

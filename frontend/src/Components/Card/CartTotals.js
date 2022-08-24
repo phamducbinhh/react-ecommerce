@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useStore } from "../../Context/Auth-Context";
+import { Link } from "react-router-dom";
 
 const Wrapper = styled.section`
   margin-top: 3rem;
@@ -59,6 +59,9 @@ const CartTotals = ({ cart }) => {
             </span>
           </h4>
         </article>
+        <Link to="/signin" className="btn">
+          proceed to checkout
+        </Link>
       </div>
     </Wrapper>
   );

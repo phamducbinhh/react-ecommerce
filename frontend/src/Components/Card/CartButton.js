@@ -72,9 +72,9 @@ const CartButton = () => {
           )}
         </span>
       </Link>
-      <button type="button" className="auth-btn">
+      <Link to={"/signin"} className="auth-btn">
         Login <FaUserPlus />
-      </button>
+      </Link>
     </Wrapper>
   );
 };

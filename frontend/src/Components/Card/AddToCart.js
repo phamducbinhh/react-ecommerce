@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useStore } from "../../Context/Auth-Context";
 import axios from "axios";
-import AmountButton from "../AmountButton";
 
 const Wrapper = styled.div`
   margin-top: 1rem;
@@ -20,9 +19,11 @@ const Wrapper = styled.div`
   }
 `;
 const AddToCart = ({ product }) => {
+  //nhận giá trị đã map từ component ProductSreen thông qua props
   const { state, dispatch } = useStore();
+  //lấy cart từ trong react-context
   const { cart } = state;
-  
+
   //hàm click add to cart
   const handleAddToCart = async () => {
     //tìm sản phẩm có tồn tại trong cart hay không
@@ -35,6 +36,7 @@ const AddToCart = ({ product }) => {
     if (data.countInStock < quantity) {
       return;
     }
+    // thực hiện hành động add
     dispatch({
       type: "CART_ADD_ITEM",
       payload: { ...product, quantity },

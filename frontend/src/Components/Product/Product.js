@@ -63,7 +63,7 @@ const ProductListStyles = styled.div`
   }
 `;
 const Product = ({ data }) => {
-  //destructuring data
+  //destructuring data lấy từ components productFeature
   const { slug, name, price, image, rating, numReviews } = data;
   return (
     <ProductListStyles>

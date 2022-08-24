@@ -37,3 +37,15 @@ export const services = [
     text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi",
   },
 ];
+
+export const theme = {
+  primary: "#62CB88",
+  secondary: "#A4D96C",
+  grayDark: "#292D32",
+  grayLight: "#E7ECF3",
+  tertiary: "#3A1097",
+  accent: "#00D1ED",
+  grayF3: "#F3EDFF",
+  gray6B: "#6B6B6B",
+  gray23: "#232323",
+};

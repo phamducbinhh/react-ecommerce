@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { FaTrash } from "react-icons/fa";
-import AmountButton from "../AmountButton";
 import { useStore } from "../../Context/Auth-Context";
+import AmountButton from "../button/AmountButton";
 const Wrapper = styled.article`
   .subtotal {
     display: none;

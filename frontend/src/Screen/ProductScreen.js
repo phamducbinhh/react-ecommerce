@@ -6,9 +6,9 @@ import styled from "styled-components";
 
 import Rating from "../Components/Rating";
 import PageHero from "../Components/PageHero";
-import Loading from "../Components/Loading";
 import AddToCart from "../Components/Card/AddToCart";
 import ProductImage from "../Components/Product/ProductImage";
+import Loading from "../Components/Loading/Loading";
 
 const Wrapper = styled.div`
   .product-center {
@@ -59,14 +59,16 @@ const ProductScreen = () => {
   //call api get products bằng axios
   useEffect(() => {
     const fetchData = async () => {
+      //loading = true
       dispatch({ type: "FETCH_REQUEST" });
       try {
+        //call api theo slug từng sản phẩm
         const result = await axios.get(`/api/products/slug/${slug}`);
         dispatch({ type: "FETCH_SUCCESS", payload: result.data });
+        // Tương tự khi sử dụng state : setState(result.data)
       } catch (err) {
         dispatch({ type: "FETCH_FAIL", payload: err.message });
       }
-      // Tương tự khi sử dụng state : setState(result.data)
     };
     fetchData();
   }, [slug]);
