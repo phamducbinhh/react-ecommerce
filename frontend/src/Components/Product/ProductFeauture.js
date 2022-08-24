@@ -5,7 +5,6 @@ import axios from "axios";
 import styled from "styled-components";
 import Loading from "../Loading/Loading";
 
-
 const Wrapper = styled.section`
   background: var(--clr-grey-10);
   .featured {

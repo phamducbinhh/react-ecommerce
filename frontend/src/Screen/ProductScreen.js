@@ -55,6 +55,7 @@ const ProductScreen = () => {
   const { slug } = params;
   const [state, dispatch] = useReducer(reducer, initialState);
   const { products, loading, error } = state; //destructuring state
+  console.log(products);
 
   //call api get products bằng axios
   useEffect(() => {

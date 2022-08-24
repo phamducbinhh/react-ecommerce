@@ -18,5 +18,6 @@ const productSchema = new mongoose.Schema(
   }
 );
 
+//tạo cơ sở dữ liệu
 const Product = mongoose.model("Product", productSchema);
 export default Product;
