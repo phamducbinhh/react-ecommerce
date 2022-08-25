@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import seedRouter from "./router/seedRoutes.js";
 import productRouter from "./router/productRoutes.js";
+import userRouter from "./router/userRoutes.js";
 
 // kết nối với mongo db
 dotenv.config();
@@ -16,9 +17,20 @@ mongoose
   });
 
 const app = express();
+//express.json()là một phương thức được tích hợp sẵn để nhận ra Đối tượng Yêu cầu đến là một Đối tượng JSON . Phương thức này được gọi là phần mềm trung gian trong ứng dụng của bạn bằng cách sử dụng mã:app.use(express.json());
+app.use(express.json());
+//express.urlencoded()là một phương thức được xây dựng sẵn để nhận ra Đối tượng Yêu cầu đến dưới dạng chuỗi hoặc mảng . Phương thức này được gọi là phần mềm trung gian trong ứng dụng của bạn bằng cách sử dụng mã:app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 app.use("/api/seed", seedRouter);
+//gộp các api vào 1 component productRouter
 app.use("/api/products", productRouter);
+//api user
+app.use("/api/users", userRouter);
 
+//xử lý lỗi trong nodejs server
+app.use((err, req, res, next) => {
+  res.status(500).send({ message: err.message });
+});
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`serve at http://localhost:${port}`);

@@ -6,6 +6,7 @@ import Label from "../Components/label/Label";
 import { useForm } from "react-hook-form";
 import Button from "../Components/button/Button";
 import PageHero from "../Components/PageHero";
+import Axios from "axios";
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -25,19 +26,35 @@ const Wrapper = styled.div`
   }
 `;
 const SignInScreen = () => {
-  const { control } = useForm();
+  const { control, handleSubmit } = useForm();
+  // const { search } = useLocation();
+  // const redirectInUrl = new URLSearchParams(search).get("redirect");
+  // const redirect = redirectInUrl ? redirectInUrl : "/";
+
+  //hàm xác thực tài khoản
+  const handleSubmitForm = async (values) => {
+    try {
+      const { data } = await Axios.post("/api/users/signin", {
+        email: values.email,
+        password: values.password,
+      });
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <Wrapper>
       <PageHero title={"Sign In"} />
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit(handleSubmitForm)}>
         <Field>
           <Label htmlFor="email">Email</Label>
           <Input
             name="email"
             type="text"
             placeholder="Enter your Email"
-            control={control}
             required
+            control={control}
           ></Input>
         </Field>
         <Field>
