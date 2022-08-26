@@ -10,9 +10,7 @@ const Wrapper = styled.section`
     display: block;
     border-radius: 8px;
     object-fit: contain;
-    border:  1px solid #ccc;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   }
 `;
 const ProductImage = ({ image }) => {

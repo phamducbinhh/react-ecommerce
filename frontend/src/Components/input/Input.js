@@ -8,7 +8,7 @@ const InputStyles = styled.div`
   width: 100%;
   input {
     width: 100%;
-    padding: ${(props) => (props.hasIcon ? "20px 60px 20px 20px" : "20px")};
+    padding: ${(props) => (props.hasIcon ? "10px 60px 10px 20px" : "10px")};
     background-color: ${(props) => props.theme.grayLight};
     border-radius: 8px;
     font-weight: 500;
@@ -45,7 +45,14 @@ const InputStyles = styled.div`
     }
   }
 `;
-const Input = ({ name = "", type = "text", children, control, ...props }) => {
+const Input = ({
+  name = "",
+  type = "text",
+  children,
+  value,
+  control,
+  ...props
+}) => {
   const { field } = useController({
     control,
     name,

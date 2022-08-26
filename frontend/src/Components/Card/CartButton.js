@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { FaShoppingCart, FaUserPlus } from "react-icons/fa";
-import { useStore } from "../../Context/Auth-Context";
+import { FaShoppingCart, FaUserMinus, FaUserPlus } from "react-icons/fa";
+import { useStore } from "../../Context/Store-Context";
+import Swal from "sweetalert2";
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -56,8 +57,27 @@ const Wrapper = styled.div`
 `;
 const CartButton = () => {
   //lấy ra số lượng sản phẩm khi add to cart từ context api
-  const { state } = useStore();
-  const { cart } = state;
+  const { state, dispatch } = useStore();
+  const { cart, userInfo } = state;
+  const navigate = useNavigate();
+
+  //hàm đăng xuất tài khoản
+  const handleLogOut = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to log out",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Sign Out!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        dispatch({ type: "USER_SIGNOUT" });
+        navigate("/");
+      }
+    });
+  };
   return (
     <Wrapper className="cart-btn-wrapper">
       <Link to="/cart" className="cart-btn">
@@ -72,9 +92,15 @@ const CartButton = () => {
           )}
         </span>
       </Link>
-      <Link to={"/signin"} className="auth-btn">
-        Login <FaUserPlus />
-      </Link>
+      {userInfo ? (
+        <button to={"/signin"} className="auth-btn" onClick={handleLogOut}>
+          {userInfo?.name} <FaUserMinus />
+        </button>
+      ) : (
+        <Link to={"/signin"} className="auth-btn">
+          Login <FaUserPlus />
+        </Link>
+      )}
     </Wrapper>
   );
 };

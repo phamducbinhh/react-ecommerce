@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useStore } from "../../Context/Store-Context";
 
 const Wrapper = styled.section`
   margin-top: 3rem;
@@ -35,6 +36,9 @@ const Wrapper = styled.section`
 `;
 const CartTotals = ({ cart }) => {
   //nhận từ component cartContent lấy từ Context
+  const { state } = useStore();
+  const { userInfo } = state;
+
   return (
     <Wrapper>
       <div>
@@ -59,9 +63,15 @@ const CartTotals = ({ cart }) => {
             </span>
           </h4>
         </article>
-        <Link to="/signin" className="btn">
-          proceed to checkout
-        </Link>
+        {userInfo ? (
+          <Link to="/shipping" className="btn">
+            proceed to checkout
+          </Link>
+        ) : (
+          <Link to="/signin" className="btn">
+            Login
+          </Link>
+        )}
       </div>
     </Wrapper>
   );

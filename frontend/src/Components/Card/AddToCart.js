@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { useStore } from "../../Context/Auth-Context";
+import { useStore } from "../../Context/Store-Context";
 import axios from "axios";
 
 const Wrapper = styled.div`

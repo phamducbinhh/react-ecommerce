@@ -20,7 +20,7 @@ const Banner = () => {
         </Link>
       </article>
       <article className='img-container'>
-        <img src="/images/burberry1.jpg"alt='nice table' className='main-img' />
+        <img src="/images/pa.jpg"alt='nice table' className='main-img' />
         <img src="/images/burberry2.jpg" alt='person working' className='accent-img' />
       </article>
     </Wrapper>

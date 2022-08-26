@@ -77,7 +77,7 @@ const Header = () => {
       <div className="nav-center">
         <div className="nav-header">
           <Link to="/">
-            <img src="/images/logo.svg" alt="Amazone" className="logo"/>
+            <img src="/images/logo.svg" alt="Amazone" className="logo" />
           </Link>
           <button type="button" className="nav-toggle">
             <FaBars />

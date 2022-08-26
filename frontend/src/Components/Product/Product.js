@@ -7,8 +7,8 @@ import { FaSearch } from "react-icons/fa";
 const ProductListStyles = styled.div`
   .container {
     position: relative;
-    background: var(--clr-black);
     border-radius: var(--radius);
+    padding: 0;
   }
   img {
     width: 100%;

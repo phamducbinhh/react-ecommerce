@@ -11,7 +11,7 @@ const ButtonStyles = styled.button`
   border-radius: 8px;
   font-weight: 600;
   font-size: 16px;
-  height: ${(props) => props.height || "55px"};
+  height: ${(props) => props.height || "45px"};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,6 +38,14 @@ const ButtonStyles = styled.button`
       background-color: var(--clr-primary-5);
       border: none;
       width: 100%;
+    `};
+  ${(props) =>
+    props.kind === "ship" &&
+    css`
+      color: ${(props) => props.theme.grayLight};
+      background-color: var(--clr-primary-5);
+      border: none;
+      width: 50%;
     `};
   &:disabled {
     opacity: 0.5;

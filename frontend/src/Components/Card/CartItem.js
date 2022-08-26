@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { FaTrash } from "react-icons/fa";
-import { useStore } from "../../Context/Auth-Context";
+import { useStore } from "../../Context/Store-Context";
 import AmountButton from "../button/AmountButton";
 const Wrapper = styled.article`
   .subtotal {

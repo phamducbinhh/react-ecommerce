@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import seedRouter from "./router/seedRoutes.js";
 import productRouter from "./router/productRoutes.js";
 import userRouter from "./router/userRoutes.js";
+import orderRouter from "./router/orderRoutes.js";
 
 // kết nối với mongo db
 dotenv.config();
@@ -24,9 +25,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/seed", seedRouter);
 //gộp các api vào 1 component productRouter
 app.use("/api/products", productRouter);
-//api user
+//api user/login
 app.use("/api/users", userRouter);
-
+//api thanh toán đặt hàng
+app.use("/api/orders",orderRouter)
 //xử lý lỗi trong nodejs server
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });

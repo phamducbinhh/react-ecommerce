@@ -1,11 +1,8 @@
 1. Add page routing
-
    1. npm i react-router-dom
    2. create route for home screen
    3. create router for product screen
-
 2. Create Node.JS Server
-
    1. run npm init in root folder
    2. Update package.json set type: module
    3. Add .js to imports
@@ -18,48 +15,47 @@
    10. create route for /api/products
    11. return products
    12. run npm start
-
 3. Fetch Products From Backend
-
    1. set proxy in package.json
    2. npm install axios
    3. use state hook
    4. use effect hook
    5. use reducer hook
-
 4. Manage State By Reducer Hook
-
    1. define reducer
    2. update fetch data
    3. get state from usReducer
-
-5. Add bootstrap UI Framework
-
-   1. npm install react-bootstrap bootstrap
-   2. update App.js
-
-6. Complete Add To Cart
-
+5. Complete Add To Cart
    1. check exist item in the cart
    2. check count in stock in backend
-
-7. Complete Cart Screen
+6. Complete Cart Screen
    1. click handler for inc/dec item
    2. click handler for remove item
    3. click handler for checkout
-8. Create Signin Screen
+7. Create Signin Screen
    1. create sign in form
    2. add email and password
    3. add signin button
-9. Connect To MongoDB Database
+8. Connect To MongoDB Database
    1. create atlas monogodb database
    2. install local mongodb database
    3. npm install mongoose
    4. connect to mongodb database
-10. Seed Sample Users
-    1. create user model
-    2. seed sample userss
-11. Create Signin Backend API
+9. Seed Sample Users
+   1. create user model
+   2. seed sample userss
+10. Create Signin Backend API
     1. create signin api
     2. npm install jsonwebtoken
     3. define generateToken
+11. Create Shipping Screen
+    1. create form inputs
+    2. handle save shipping address
+    3. add checkout wizard bar
+12. Create Sign Up Screen
+    1. create input forms
+    2. handle submit
+    3. create backend api
+13. Implement Select Payment Method Screen
+    1. create input forms
+    2. handle submit
