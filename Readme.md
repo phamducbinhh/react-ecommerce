@@ -59,3 +59,94 @@
 13. Implement Select Payment Method Screen
     1. create input forms
     2. handle submit
+14. Create Order Screen
+    1. create backend api for order/:id
+    2. fetch order api in frontend
+    3. show order information in 2 cloumns
+15. Pay Order By PayPal
+    1. generate paypal client id
+    2. create api to return client id
+    3. install react-paypal-js
+    4. use PayPalScriptProvider in index.js
+    5. use usePayPalScriptReducer in Order Screen
+    6. implement loadPaypalScript function
+    7. render paypal button
+    8. implement onApprove payment function
+    9. create pay order api in backend
+
+
+1. Thêm định tuyến trang
+   1. npm  react-router-dom
+   2. tạo lộ trình cho màn hình chính
+   3. tạo bộ định tuyến cho màn hình sản phẩm
+2. Tạo máy chủ Node.JS
+   1. chạy npm init trong thư mục gốc
+   2. Cập nhật loại set package.json: module
+   3. Thêm .js vào các mục nhập
+   4. npm cài đặt nhanh
+   5. tạo server.js
+   6. thêm lệnh bắt đầu làm phụ trợ nút / server.js
+   7. yêu cầu thể hiện
+   8. Tạo lộ trình cho / trả lại phần phụ trợ đã sẵn sàng.
+   9. chuyển products.js từ frontend sang backend
+   10. tạo lộ trình cho / api / products
+   11. trả lại sản phẩm
+   12. chạy npm start
+3. Tìm nạp sản phẩm từ chương trình phụ trợ
+   1. đặt proxy trong package.json
+   2. npm cài đặt axios
+   3. sử dụng móc trạng thái
+   4. sử dụng móc hiệu ứng
+   5. sử dụng móc giảm tốc
+4. Quản lý trạng thái bằng móc giảm tốc
+   1. xác định bộ giảm tốc
+   2. cập nhật dữ liệu tìm nạp
+   3. nhận trạng thái từ usReducer
+5. Hoàn thành Thêm vào giỏ hàng
+   1. kiểm tra mặt hàng tồn tại trong giỏ hàng
+   2. kiểm tra số lượng trong kho trong phần phụ trợ
+6. Hoàn thành màn hình giỏ hàng
+   1. nhấp chuột xử lý cho mục inc / dec
+   2. nhấp vào trình xử lý để loại bỏ mục
+   3. nhấp chuột xử lý để thanh toán
+7. Tạo màn hình đăng nhập
+   1. tạo biểu mẫu đăng nhập
+   2. thêm email và mật khẩu
+   3. thêm nút đăng nhập
+8. Kết nối với cơ sở dữ liệu MongoDB
+   1. tạo cơ sở dữ liệu atlas monogodb
+   2. cài đặt cơ sở dữ liệu mongodb cục bộ
+   3. npm cài đặt mongoose
+   4. kết nối với cơ sở dữ liệu mongodb
+9. Người dùng mẫu hạt giống
+   1. tạo mô hình người dùng
+   2. người dùng mẫu hạt giống
+10. Tạo API phụ trợ đăng nhập
+    1. tạo api đăng nhập
+    2. npm cài đặt jsonwebtoken
+    3. định nghĩa createToken
+11. Tạo màn hình vận chuyển
+    1. tạo đầu vào biểu mẫu
+    2. xử lý lưu địa chỉ giao hàng
+    3. thêm thanh hướng dẫn thanh toán
+12. Tạo màn hình đăng ký
+    1. tạo biểu mẫu đầu vào
+    2. xử lý trình
+    3. tạo api phụ trợ
+13. Triển khai màn hình Chọn phương thức thanh toán
+    1. tạo biểu mẫu đầu vào
+    2. xử lý trình
+14. Tạo màn hình đặt hàng
+    1. tạo api phụ trợ cho order /: id
+    2. tìm nạp api đặt hàng trong giao diện người dùng
+    3. hiển thị thông tin đặt hàng trong 2 cloumns
+15. Thanh toán đơn hàng bằng PayPal
+    1. tạo id khách hàng paypal
+    2. tạo api để trả về id khách hàng
+    3. cài đặt react-paypal-js
+    4. sử dụng PayPalScriptProvider trong index.js
+    5. sử dụng usePayPalScriptReducer trong Màn hình đặt hàng
+    6. thực hiện chức năng loadPaypalScript
+    7. kết xuất nút paypal
+    8. triển khai chức năng thanh toán onApprove
+    9. tạo api lệnh thanh toán trong phần phụ trợ

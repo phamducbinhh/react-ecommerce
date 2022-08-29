@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-//cấu trúc api của 1 đơn đặt hàng
+//cấu trúc api của 1 đơn đặt hàng được thêm vào database
 const orderSchema = new mongoose.Schema(
   {
     //đơn đặt hàng để lưu thông tin sản phẩm
@@ -50,5 +50,6 @@ const orderSchema = new mongoose.Schema(
   }
 );
 
+//add vào mongo db
 const Order = mongoose.model("Order", orderSchema);
 export default Order;

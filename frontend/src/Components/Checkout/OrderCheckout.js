@@ -10,7 +10,7 @@ import { initialState, reducerOrder } from "../../Reducer/reducerOrder";
 import Axios from "axios";
 import Loading from "../Loading/Loading";
 
-const OrderCheckout = () => {
+const OrderCheckout = ({ type = "" }) => {
   //lấy ra từ context api
   const { state, dispatch: ctxDispatch } = useStore();
   const { cart, userInfo } = state;
@@ -59,7 +59,9 @@ const OrderCheckout = () => {
       dispatch({ type: "CREATE_SUCCESS" });
       //điều hướng đến trang thanh toán bằng thẻ
       navigate(`/order/${data.order._id}`);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {

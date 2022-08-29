@@ -22,13 +22,17 @@ const app = express();
 app.use(express.json());
 //express.urlencoded()là một phương thức được xây dựng sẵn để nhận ra Đối tượng Yêu cầu đến dưới dạng chuỗi hoặc mảng . Phương thức này được gọi là phần mềm trung gian trong ứng dụng của bạn bằng cách sử dụng mã:app.use(express.urlencoded());
 app.use(express.urlencoded({ extended: true }));
+//api khi thanh toán bằng paypal
+app.get("/api/keys/paypal", (req, res) => {
+  res.send(process.env.PAYPAL_CLIENT_ID || "sb");
+});
 app.use("/api/seed", seedRouter);
 //gộp các api vào 1 component productRouter
 app.use("/api/products", productRouter);
 //api user/login
 app.use("/api/users", userRouter);
 //api thanh toán đặt hàng
-app.use("/api/orders",orderRouter)
+app.use("/api/orders", orderRouter);
 //xử lý lỗi trong nodejs server
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });

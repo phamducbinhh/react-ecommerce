@@ -49,3 +49,9 @@ export const theme = {
   gray6B: "#6B6B6B",
   gray23: "#232323",
 };
+
+export const getError = (error) => {
+  return error.response && error.response.data.message
+    ? error.response.data.message
+    : error.message;
+};

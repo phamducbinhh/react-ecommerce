@@ -15,6 +15,7 @@ const ShippingCheckout = () => {
         {cart.shippingAddress.city}, {cart.shippingAddress.postalCode},
         {cart.shippingAddress.country}
       </Card.Text>
+
       <Link to="/shipping">Edit</Link>
     </Card.Body>
   );

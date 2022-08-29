@@ -12,7 +12,8 @@ const PaymentCheckout = () => {
       <Card.Text>
         <strong>Method:</strong> {cart.paymentMethod}
       </Card.Text>
-      <Link to="/payment">Edit</Link>
+        <Link to="/payment">Edit</Link>
+ 
     </Card.Body>
   );
 };
