@@ -4,15 +4,15 @@ const data = {
   //api/users/
   users: [
     {
-      name: 'Admin',
-      email: 'admin@example.com',
-      password: bcrypt.hashSync('123456'),
+      name: "Admin",
+      email: "admin@example.com",
+      password: bcrypt.hashSync("123456"),
       isAdmin: true,
     },
     {
-      name: 'Binh',
-      email: 'user@example.com',
-      password: bcrypt.hashSync('123456'),
+      name: "Binh",
+      email: "user@example.com",
+      password: bcrypt.hashSync("123456"),
       isAdmin: false,
     },
   ],

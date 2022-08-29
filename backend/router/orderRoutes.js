@@ -27,6 +27,16 @@ orderRouter.post(
   })
 );
 
+//api history order
+orderRouter.get(
+  "/mine",
+  isAuth,
+  expressAsyncHandler(async (req, res) => {
+    const orders = await Order.find({ user: req.user._id });
+    res.send(orders);
+  })
+);
+
 //tạo 1 api để trả về thông tin đặt hàng dựa vào id đặt hàng
 orderRouter.get(
   "/:id",

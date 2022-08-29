@@ -1,5 +1,4 @@
 import React, { useEffect, useReducer } from "react";
-import Button from "react-bootstrap/Button";
 import ListGroup from "react-bootstrap/ListGroup";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -9,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { initialState, reducerOrder } from "../../Reducer/reducerOrder";
 import Axios from "axios";
 import Loading from "../Loading/Loading";
+import Button from "../button/Button";
 
 const OrderCheckout = ({ type = "" }) => {
   //lấy ra từ context api
@@ -106,6 +106,7 @@ const OrderCheckout = ({ type = "" }) => {
           <div className="d-grid">
             <Button
               type="button"
+              kind="ghost"
               onClick={placeOrderHandler}
               disabled={cart.cartItems.length === 0}
             >

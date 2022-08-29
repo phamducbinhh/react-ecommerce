@@ -138,7 +138,7 @@ const OrderScreen = () => {
     <MessageBox variant="danger">{error}</MessageBox>
   ) : (
     <Wrapper>
-      <h1 className="my-3">Order {orderId}</h1>
+      <h1 className="my-3 title-order">Order {orderId}</h1>
       <Row>
         <Col md={8}>
           <Card className="mb-3">
@@ -156,6 +156,7 @@ const OrderScreen = () => {
         </Col>
         <Col md={4}>
           <Card className="mb-3">
+            {/* component OrderProceed */}
             <OrderProceed
               order={order}
               isPending={isPending}

@@ -1,9 +1,11 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { FaShoppingCart, FaUserMinus, FaUserPlus } from "react-icons/fa";
+import { FaShoppingCart, FaUserPlus } from "react-icons/fa";
 import { useStore } from "../../Context/Store-Context";
 import Swal from "sweetalert2";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import { LinkContainer } from "react-router-bootstrap";
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -11,7 +13,7 @@ const Wrapper = styled.div`
   width: 225px;
   .cart-btn {
     color: var(--clr-grey-1);
-    font-size: 1.5rem;
+    font-size: 20px;
     letter-spacing: var(--spacing);
     color: var(--clr-grey-1);
     display: flex;
@@ -41,18 +43,13 @@ const Wrapper = styled.div`
     color: var(--clr-white);
     padding: 12px;
   }
-  .auth-btn {
-    display: flex;
-    align-items: center;
-    background: transparent;
-    border-color: transparent;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--clr-grey-1);
-    letter-spacing: var(--spacing);
-    svg {
-      margin-left: 5px;
-    }
+  .title,
+  .nav-link {
+    color: hsl(209 61% 16%);
+    font-size: 20px;
+    letter-spacing: 1.6px;
+    line-height: 36px;
+    margin-right: 10px;
   }
 `;
 const CartButton = () => {
@@ -78,6 +75,13 @@ const CartButton = () => {
       }
     });
   };
+
+  //lấy ra tên riêng "ví dụ nguyễn văn a => a"
+  const getLastName = (name) => {
+    if (!name) return "User";
+    const length = name.split(" ").length;
+    return name.split(" ")[length - 1];
+  };
   return (
     <Wrapper className="cart-btn-wrapper">
       <Link to="/cart" className="cart-btn">
@@ -93,13 +97,29 @@ const CartButton = () => {
         </span>
       </Link>
       {userInfo ? (
-        <button to={"/signin"} className="auth-btn" onClick={handleLogOut}>
-          {userInfo?.name} <FaUserMinus />
-        </button>
+        <NavDropdown
+          title={getLastName(userInfo.name)}
+          id="basic-nav-dropdown"
+          className="title"
+        >
+          <LinkContainer to="/profile">
+            <NavDropdown.Item>User Profile</NavDropdown.Item>
+          </LinkContainer>
+          <LinkContainer to="/orderhistory">
+            <NavDropdown.Item>Order History</NavDropdown.Item>
+          </LinkContainer>
+          <NavDropdown.Divider />
+          <Link className="dropdown-item" to="#signout" onClick={handleLogOut}>
+            Sign Out
+          </Link>
+        </NavDropdown>
       ) : (
-        <Link to={"/signin"} className="auth-btn">
-          Login <FaUserPlus />
-        </Link>
+        <div className="flex items-center">
+          <Link className="nav-link" to="/signin">
+            Login
+          </Link>
+          <FaUserPlus />
+        </div>
       )}
     </Wrapper>
   );
