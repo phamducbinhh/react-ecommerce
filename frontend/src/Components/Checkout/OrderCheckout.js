@@ -36,6 +36,7 @@ const OrderCheckout = ({ type = "" }) => {
     try {
       dispatch({ type: "CREATE_REQUES" });
       //call api order đã viết từ backend
+      //để lưu dữ liệu, bạn cần gửi request lên server với method POST
       const { data } = await Axios.post(
         "/api/orders",
         {

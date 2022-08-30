@@ -36,11 +36,11 @@ const ShippingScreen = () => {
   const {
     control,
     handleSubmit,
+    reset,
     formState: { isSubmitting },
   } = useForm();
 
   //hàm xác nhận shippingScreen
-
   const handleSubmitShipping = async (values) => {
     dispatch({
       type: "SAVE_SHIPPING_ADDRESS",
@@ -62,6 +62,20 @@ const ShippingScreen = () => {
       navigate("/signin");
     }
   }, [userInfo, navigate]);
+
+  //reset
+  useEffect(() => {
+    if (shippingAddress) {
+      reset({
+        fullName: shippingAddress.fullName,
+        address: shippingAddress.address,
+        city: shippingAddress.city,
+        postalCode: shippingAddress.postalCode,
+        country: shippingAddress.country,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <Wrapper className="section">
       <PageHero title={"shipping"} />

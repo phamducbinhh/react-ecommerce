@@ -53,6 +53,7 @@ const SignUpScreen = () => {
     }
     try {
       //đăng ký tài khoản gửi lên api bao gồm các thông tin name,email,password
+      //để lưu dữ liệu, bạn cần gửi request lên server với method POST
       const { data } = await Axios.post("/api/users/signup", {
         name: values.name,
         email: values.email,
@@ -60,6 +61,13 @@ const SignUpScreen = () => {
       });
       // thực hiện hành động tương tự setState(result.data)
       dispatch({ type: "USER_SIGNIN", payload: data });
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Login success",
+        showConfirmButton: false,
+        timer: 1500,
+      });
       navigate("/");
     } catch (error) {
       console.log(error);

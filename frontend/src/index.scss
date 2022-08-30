@@ -140,7 +140,8 @@ p {
 .section {
   padding: 5rem 0;
 }
-.section-center {
+.section-center,
+.artical-center  {
   width: 90vw;
   margin: 0 auto;
   max-width: var(--max-width);
@@ -211,12 +212,26 @@ p {
 }
 
 @media screen and (max-width: 1023.98px) {
+  h1 {
+    font-size: 18px;
+  }
   tr {
     display: block;
     display: flex;
     flex-direction: column;
+    font-size: 12px;
+    margin-bottom: 100px;
+    margin-left: 50px;
   }
-  .title-order{
+  thead {
     display: none;
+  }
+  .title-order {
+    display: none;
+  }
+  .artical-center {
+    display: flex;
+    justify-content: center;
+    width: 0px;
   }
 }

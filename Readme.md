@@ -77,3 +77,13 @@
     1. create order screen
     2. create order history api
     3. use api in the frontend
+17. Create Profile Screen
+    1. get user info from context
+    2. show user information
+    3. create user update api
+    4. update user info
+
+POST – Create: Tạo dữ liệu mới
+GET – Read: Lấy dữ liệu về
+PUT – Update: Cập nhật dữ liệu
+DELETE – Delete: Xóa dữ liệu

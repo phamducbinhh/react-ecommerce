@@ -48,12 +48,20 @@ const SignInScreen = () => {
   const handleSubmitForm = async (values) => {
     try {
       //đăng nhập tài khoản thông tin data trả về từ api chứa các thông tin user,email,password
+      //để lưu dữ liệu, bạn cần gửi request lên server với method POST
       const { data } = await Axios.post("/api/users/signin", {
         email: values.email,
         password: values.password,
       });
       // thực hiện hành động tương tự setState(result.data)
       dispatch({ type: "USER_SIGNIN", payload: data });
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Login success",
+        showConfirmButton: false,
+        timer: 1500,
+      });
       navigate("/");
     } catch (error) {
       Swal.fire("Failed", "Login Failed", "warning");

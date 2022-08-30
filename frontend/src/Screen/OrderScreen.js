@@ -63,6 +63,8 @@ const OrderScreen = () => {
     return actions.order.capture().then(async function (details) {
       try {
         dispatch({ type: "PAY_REQUEST" });
+        //để sửa dữ liệu thì bạn cần dùng method PUT hoặc PATCH
+        //PUT – Update: Cập nhật dữ liệu
         const { data } = await axios.put(
           `/api/orders/${order._id}/pay`,
           details,
@@ -96,6 +98,7 @@ const OrderScreen = () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
         //lấy dũ liệu từ api order trả về thông tin đã thanh toán từ api order
+        // để lấy ra list dữ liệu, bạn cần gửi request lên server với method GET
         const { data } = await axios.get(`/api/orders/${orderId}`, {
           headers: { authorization: `Bearer ${userInfo.token}` },
         });

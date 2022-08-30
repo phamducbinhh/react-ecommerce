@@ -14,6 +14,7 @@ import SignInScreen from "./Screen/SignInScreen";
 import SignUpScreen from "./Screen/SignUpScreen";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import OrderHistoryScreen from "./Screen/OrderHistoryScreen";
+import ProfileScreen from "./Screen/ProfileScreen";
 
 const App = () => {
   return (
@@ -38,6 +39,8 @@ const App = () => {
               <Route path="/order/:id" element={<OrderScreen />} />
               {/* component lịch sử giao dịch */}
               <Route path="/orderhistory" element={<OrderHistoryScreen />} />
+              {/* component trang cá nhân */}
+              <Route path="/profile" element={<ProfileScreen />} />
               <Route path="*" element={<ErrorPage />} />
             </Route>
           </Routes>
