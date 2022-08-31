@@ -16,6 +16,8 @@ const initialState = {
       ? JSON.parse(localStorage.getItem("cartItem"))
       : [],
     //tương tự giống như dùng state : useState(JSON.parse(localStorage.getItem("cartItem") || [])
+    //trạng thái mở tab sidebar close
+    isSidebarOpen: false,
   },
 };
 //tạo hàm reducer
@@ -103,6 +105,13 @@ const reducer = (state, action) => {
         ...state,
         cart: { ...state.cart, paymentMethod: action.payload },
       };
+    }
+    //close open toggle sidebar
+    case "SIDEBAR_OPEN": {
+      return { ...state, isSidebarOpen: true };
+    }
+    case "SIDEBAR_CLOSE": {
+      return { ...state, isSidebarOpen: false };
     }
     // default
     default:

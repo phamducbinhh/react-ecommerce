@@ -6,7 +6,7 @@ const RateTingStyles = styled.div`
     color: #ffc000;
   }
 `;
-const Rating = ({ rating, numReviews, className = "" }) => {
+const Rating = ({ rating, numReviews, className = "", caption }) => {
   return (
     <RateTingStyles>
       <div className={`rating ${className}`}>
@@ -65,7 +65,11 @@ const Rating = ({ rating, numReviews, className = "" }) => {
             }
           />
         </span>
-        <span> {numReviews} reviews</span>
+        {caption ? (
+          <span>{caption}</span>
+        ) : (
+          <span>{" " + numReviews + " reviews"}</span>
+        )}
       </div>
     </RateTingStyles>
   );

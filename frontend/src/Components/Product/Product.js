@@ -16,6 +16,7 @@ const ProductListStyles = styled.div`
     object-fit: cover;
     border-radius: var(--radius);
     transition: var(--transition);
+    border: 1px solid #cccccc;
   }
   .link {
     position: absolute;
@@ -63,7 +64,7 @@ const ProductListStyles = styled.div`
   }
 `;
 const Product = ({ data }) => {
-  //destructuring data lấy từ components productFeature
+  //destructuring data lấy từ components productFeature và component productListItem
   const { slug, name, price, image, rating, numReviews } = data;
   return (
     <ProductListStyles>

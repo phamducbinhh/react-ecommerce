@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { FaBars } from "react-icons/fa";
 import { links } from "../Util/constanst";
 import CartButton from "../Components/Card/CartButton";
+import { useStore } from "../Context/Store-Context";
 const HeaderStyles = styled.div`
   /* Header */
   height: 5rem;
@@ -72,6 +73,7 @@ const HeaderStyles = styled.div`
 `;
 
 const Header = () => {
+  const { openSidebar } = useStore();
   return (
     <HeaderStyles>
       <div className="nav-center">
@@ -79,7 +81,7 @@ const Header = () => {
           <Link to="/">
             <img src="/images/logo.svg" alt="Amazone" className="logo" />
           </Link>
-          <button type="button" className="nav-toggle">
+          <button type="button" className="nav-toggle" onClick={openSidebar}>
             <FaBars />
           </button>
         </div>

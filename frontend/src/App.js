@@ -15,6 +15,7 @@ import SignUpScreen from "./Screen/SignUpScreen";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import OrderHistoryScreen from "./Screen/OrderHistoryScreen";
 import ProfileScreen from "./Screen/ProfileScreen";
+import ProductListPage from "./Screen/ProductListPage";
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
               <Route path="/signin" element={<SignInScreen />} />
               <Route path="/signup" element={<SignUpScreen />} />
               <Route path="/shipping" element={<ShippingScreen />} />
+              <Route path="/products" element={<ProductListPage />} />
               {/* component lựa chọn phương thức thanh toán */}
               <Route path="/payment" element={<Payment />} />
               {/* component thanh toán */}

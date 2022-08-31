@@ -82,6 +82,10 @@
     2. show user information
     3. create user update api
     4. update user info
+18. Create Search Screen
+    1. show filters
+    2. create api for searching products
+    3. display results
 
 POST – Create: Tạo dữ liệu mới
 GET – Read: Lấy dữ liệu về

@@ -28,14 +28,13 @@ const Wrapper = styled.div`
 const ProfileScreen = () => {
   const { state, dispatch: ctxDispatch } = useStore();
   const { userInfo } = state;
-  console.log(userInfo);
 
-  const [{ loadingUpdate }, dispatch] = useReducer(reducerUpdate, initialState);
+  const [dispatch] = useReducer(reducerUpdate, initialState);
   const {
     control,
     handleSubmit,
     reset,
-    formState: { isSubmitting},
+    formState: { isSubmitting },
   } = useForm({
     defaultValues: {},
   });

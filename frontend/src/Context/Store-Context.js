@@ -5,7 +5,15 @@ const AuthContext = createContext();
 //kho chứa các sản phẩm đã thêm và thông tin user
 const StoreProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const values = { state, dispatch };
+  //hàm click đóng mở tab sidebar
+  const openSidebar = () => {
+    dispatch({ type: "SIDEBAR_OPEN" });
+  };
+  //hàm click đóng mở tab sidebar
+  const closeSidebar = () => {
+    dispatch({ type: "SIDEBAR_CLOSE" });
+  };
+  const values = { state, dispatch, openSidebar, closeSidebar };
   return (
     <AuthContext.Provider value={values} {...props}></AuthContext.Provider>
   );
