@@ -12,7 +12,7 @@ const Category = () => {
       <div className="mb-4">
         <h5 className="font-semibold">category</h5>
         <ul>
-          <li>
+          <li className="mb-2 text-sm font-medium">
             <Link
               className={"all" === category ? "text-bold" : ""}
               to={getFilterUrl({ category: "all" })}
@@ -21,7 +21,7 @@ const Category = () => {
             </Link>
           </li>
           {categories?.map((c) => (
-            <li key={c}>
+            <li key={c} className="mb-2 text-sm">
               <Link
                 className={c === category ? "text-bold" : ""}
                 to={getFilterUrl({ category: c })}
@@ -35,7 +35,7 @@ const Category = () => {
       <div className="mb-4">
         <h5 className="font-semibold">Price</h5>
         <ul>
-          <li>
+          <li className="mb-2 text-xs font-medium ">
             <Link
               className={"all" === price ? "text-bold" : ""}
               to={getFilterUrl({ price: "all" })}
@@ -44,7 +44,7 @@ const Category = () => {
             </Link>
           </li>
           {prices.map((p) => (
-            <li key={p.value}>
+            <li key={p.value} className="mb-2 text-sm">
               <Link
                 to={getFilterUrl({ price: p.value })}
                 className={p.value === price ? "text-bold" : ""}
@@ -57,9 +57,9 @@ const Category = () => {
       </div>
       <div className="mb-4">
         <h5 className="font-semibold"> Customer Review</h5>
-        <ul>
+        <ul className="text-xs ">
           {ratings.map((r) => (
-            <li key={r.name}>
+            <li key={r.name} className="mb-2">
               <Link
                 to={getFilterUrl({ rating: r.rating })}
                 className={`${r.rating}` === `${rating}` ? "text-bold" : ""}
@@ -68,7 +68,7 @@ const Category = () => {
               </Link>
             </li>
           ))}
-          <li>
+          <li className="mb-2">
             <Link
               to={getFilterUrl({ rating: "all" })}
               className={rating === "all" ? "text-bold" : ""}

@@ -11,9 +11,10 @@ const Wrapper = styled.div`
     margin: 4rem auto;
   }
   .text-bold {
-    font-weight: bold;
+    font-weight: 600;
     border-bottom: 1px solid var(--clr-primary-3);
     padding-bottom: 2px;
+    color: #617d98;
   }
   @media (min-width: 768px) {
     .products {

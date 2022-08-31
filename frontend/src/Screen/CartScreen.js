@@ -23,7 +23,7 @@ const CartScreen = () => {
       <Wrapper className="page-100">
         <div className="empty">
           <h2>Your cart is empty</h2>
-          <Link to="/" className="btn">
+          <Link to="/products" className="btn">
             fill it
           </Link>
         </div>

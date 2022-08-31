@@ -10,6 +10,9 @@ import ProductImage from "../Components/Product/ProductImage";
 import Loading from "../Components/Loading/Loading";
 
 const Wrapper = styled.div`
+  h2 {
+    font-weight: 700;
+  }
   .product-center {
     display: grid;
     gap: 4rem;
@@ -43,7 +46,6 @@ const Wrapper = styled.div`
     .price {
       font-size: 1.25rem;
       font-weight: 700;
-      color: green;
     }
   }
 `;

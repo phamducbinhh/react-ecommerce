@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { UseHookSearchData } from "../../Hooks/useUsingSearch";
+import Loading from "../Loading/Loading";
 import MessageBox from "../MessageBox";
 
 import Product from "./Product";
@@ -25,14 +26,16 @@ const Wrapper = styled.section`
 `;
 
 const ProductListItem = () => {
-  const { products } = UseHookSearchData();
+  const { products, loading } = UseHookSearchData(); //customHooks chứa tất cả các logic phần filter
   return (
     <Wrapper>
       {products?.length === 0 && <MessageBox>No Product Found</MessageBox>}
+      {loading && <Loading />}
       <div className="products-container">
-        {products?.map((product) => (
-          <Product key={product._id} data={product}></Product>
-        ))}
+        {!loading &&
+          products?.map((product) => (
+            <Product key={product._id} data={product}></Product>
+          ))}
       </div>
     </Wrapper>
   );

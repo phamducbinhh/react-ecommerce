@@ -8,16 +8,17 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { LinkContainer } from "react-router-bootstrap";
 const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: inherit;
   align-items: center;
   width: 225px;
   .cart-btn {
     color: var(--clr-grey-1);
-    font-size: 20px;
+    font-size: 18px;
     letter-spacing: var(--spacing);
     color: var(--clr-grey-1);
     display: flex;
     align-items: center;
+    margin-right: 20px;
   }
   .cart-container {
     display: flex;
@@ -46,7 +47,7 @@ const Wrapper = styled.div`
   .title,
   .nav-link {
     color: hsl(209 61% 16%);
-    font-size: 20px;
+    font-size: 18px;
     letter-spacing: 1.6px;
     line-height: 36px;
     margin-right: 10px;
@@ -84,6 +85,7 @@ const CartButton = () => {
   };
   return (
     <Wrapper className="cart-btn-wrapper">
+      {/* giỏ hàng */}
       <Link to="/cart" className="cart-btn">
         Cart
         <span className="cart-container">
@@ -96,6 +98,7 @@ const CartButton = () => {
           )}
         </span>
       </Link>
+      {/* user */}
       {userInfo ? (
         <NavDropdown
           title={getLastName(userInfo.name)}
@@ -120,6 +123,23 @@ const CartButton = () => {
           </Link>
           <FaUserPlus />
         </div>
+      )}
+      {/* admin */}
+      {userInfo && userInfo.isAdmin && (
+        <NavDropdown title="Admin" id="admin-nav-dropdown">
+          <LinkContainer to="/admin/dashboard">
+            <NavDropdown.Item>Dashboard</NavDropdown.Item>
+          </LinkContainer>
+          <LinkContainer to="/admin/productlist">
+            <NavDropdown.Item>Products</NavDropdown.Item>
+          </LinkContainer>
+          <LinkContainer to="/admin/orderlist">
+            <NavDropdown.Item>Orders</NavDropdown.Item>
+          </LinkContainer>
+          <LinkContainer to="/admin/userlist">
+            <NavDropdown.Item>Users</NavDropdown.Item>
+          </LinkContainer>
+        </NavDropdown>
       )}
     </Wrapper>
   );

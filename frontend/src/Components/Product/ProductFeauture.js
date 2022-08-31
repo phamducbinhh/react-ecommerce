@@ -3,9 +3,15 @@ import Product from "./Product";
 import styled from "styled-components";
 import Loading from "../Loading/Loading";
 import { FetchDataProduct } from "../../Hooks/useFetchDataProduct";
+import { Link } from "react-router-dom";
 
 const Wrapper = styled.section`
   background: var(--clr-grey-10);
+  h2 {
+    color: #102a42;
+    font-size: 40px;
+    font-weight: 700;
+  }
   .featured {
     margin: 4rem auto;
     display: grid;
@@ -15,9 +21,11 @@ const Wrapper = styled.section`
     }
   }
   .btn {
-    display: block;
-    width: 148px;
     margin: 0 auto;
+    text-align: center;
+  }
+  .btn-wrap {
+    width: 100%;
     text-align: center;
   }
   @media (min-width: 576px) {
@@ -47,6 +55,11 @@ const ProductFeauture = () => {
             <Product key={product.slug} data={product} />
           ))
         )}
+      </div>
+      <div className="btn-wrap">
+        <Link to="/products" className="btn">
+          all products
+        </Link>
       </div>
     </Wrapper>
   );

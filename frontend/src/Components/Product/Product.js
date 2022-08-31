@@ -3,20 +3,29 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Rating from "../Rating";
 import { FaSearch } from "react-icons/fa";
+import ProductImage from "./ProductImage";
 
 const ProductListStyles = styled.div`
+  transition: 0.3s;
+  h5 {
+    font-size: 13px;
+    font-weight: 700;
+  }
   .container {
     position: relative;
+    background: var(--clr-black);
     border-radius: var(--radius);
+    overflow: hidden;
     padding: 0;
+    margin-bottom: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+      rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
   }
   img {
     width: 100%;
     display: block;
     object-fit: cover;
-    border-radius: var(--radius);
     transition: var(--transition);
-    border: 1px solid #cccccc;
   }
   .link {
     position: absolute;
@@ -39,7 +48,9 @@ const ProductListStyles = styled.div`
     }
   }
   .container:hover img {
-    opacity: 0.5;
+    transform: scale(1.05);
+    transition: 0.3s;
+    opacity: 0.7;
   }
   .container:hover .link {
     opacity: 1;
@@ -53,7 +64,7 @@ const ProductListStyles = styled.div`
   footer h5,
   footer p {
     margin-bottom: 0;
-    font-weight: 400;
+    font-weight: 600;
   }
   footer p {
     color: var(--clr-primary-5);
@@ -61,6 +72,7 @@ const ProductListStyles = styled.div`
   }
   .rating {
     margin-top: 5px;
+    font-size: 14px;
   }
 `;
 const Product = ({ data }) => {
@@ -70,7 +82,7 @@ const Product = ({ data }) => {
     <ProductListStyles>
       <div className="container" key={slug}>
         <Link to={`/product/${slug}`}>
-          <img src={image} alt={name} />
+          <ProductImage image={image} />
         </Link>
         <Link to={`/product/${slug}`} className="link">
           <FaSearch />

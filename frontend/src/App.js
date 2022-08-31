@@ -20,6 +20,7 @@ import ProductListPage from "./Screen/ProductListPage";
 const App = () => {
   return (
     <Fragment>
+      {/* global-context : useReducer + UseContext */}
       <StoreProvider>
         {/* package react-paypal */}
         <PayPalScriptProvider deferLoading={true}>
@@ -32,6 +33,7 @@ const App = () => {
               <Route path="/signin" element={<SignInScreen />} />
               <Route path="/signup" element={<SignUpScreen />} />
               <Route path="/shipping" element={<ShippingScreen />} />
+              {/* trang danh sách lọc các sản phẩm */}
               <Route path="/products" element={<ProductListPage />} />
               {/* component lựa chọn phương thức thanh toán */}
               <Route path="/payment" element={<Payment />} />

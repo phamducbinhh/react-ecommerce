@@ -11,6 +11,8 @@ const HeaderStyles = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   .nav-center {
     width: 90vw;
     margin: 0 auto;

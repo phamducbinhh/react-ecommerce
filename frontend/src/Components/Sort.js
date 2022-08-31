@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { FetchDataProduct } from "../Hooks/useFetchDataProduct";
 import { UseHookSearchData } from "../Hooks/useUsingSearch";
 import Button from "./button/Button";
 

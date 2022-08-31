@@ -29,7 +29,7 @@ const ProfileScreen = () => {
   const { state, dispatch: ctxDispatch } = useStore();
   const { userInfo } = state;
 
-  const [dispatch] = useReducer(reducerUpdate, initialState);
+  const [{ loadingUpdate }, dispatch] = useReducer(reducerUpdate, initialState);
   const {
     control,
     handleSubmit,
