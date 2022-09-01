@@ -1,6 +1,7 @@
 import express from "express";
 import Product from "../models/productModel.js";
 import expressAsyncHandler from "express-async-handler";
+import { isAdmin, isAuth } from "../utils.js";
 
 const productRouter = express.Router();
 
@@ -29,8 +30,36 @@ productRouter.get("/slug/:slug", async (req, res) => {
   }
 });
 
+const PAGE_SIZE = 6; //page size của producrs
+const PAGE_SIZES = 3; //page size của admin product-manage
+
+//api admin...//products - dasboard - user...
+productRouter.get(
+  "/admin",
+  //chỉ admin mới được phép truy cập các chức năng này
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const { query } = req;
+    const page = query.page || 1;
+    const pageSize = query.pageSize || PAGE_SIZES;
+
+    //chức năng phân trang
+    const products = await Product.find()
+      .skip(pageSize * (page - 1))
+      .limit(pageSize);
+    const countProducts = await Product.countDocuments();
+    //trả về các sản phẩm khi click vào các page
+    res.send({
+      products,
+      countProducts,
+      page,
+      pages: Math.ceil(countProducts / pageSize),
+    });
+  })
+);
+
 //api search
-const PAGE_SIZE = 6;
 productRouter.get(
   "/search",
   expressAsyncHandler(async (req, res) => {
@@ -117,5 +146,28 @@ productRouter.get("/:id", async (req, res) => {
     res.status(404).send({ message: "Product Not Found" });
   }
 });
+
+//api post product
+productRouter.post(
+  "/",
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const newProduct = new Product({
+      name: "sample name " + Date.now(),
+      slug: "sample-name-" + Date.now(),
+      image: "/images/p1.jpg",
+      price: 0,
+      category: "sample category",
+      brand: "sample brand",
+      countInStock: 0,
+      rating: 0,
+      numReviews: 0,
+      description: "sample description",
+    });
+    const product = await newProduct.save();
+    res.send({ message: "Product Created", product });
+  })
+);
 
 export default productRouter;

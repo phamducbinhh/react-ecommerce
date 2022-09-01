@@ -72,7 +72,7 @@ const CartButton = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         dispatch({ type: "USER_SIGNOUT" });
-        navigate("/");
+        navigate("/signin");
       }
     });
   };
@@ -124,19 +124,19 @@ const CartButton = () => {
           <FaUserPlus />
         </div>
       )}
-      {/* admin */}
+      {/* nếu là admin thì mới hiện*/}
       {userInfo && userInfo.isAdmin && (
         <NavDropdown title="Admin" id="admin-nav-dropdown">
           <LinkContainer to="/admin/dashboard">
             <NavDropdown.Item>Dashboard</NavDropdown.Item>
           </LinkContainer>
-          <LinkContainer to="/admin/productlist">
+          <LinkContainer to="/admin/products">
             <NavDropdown.Item>Products</NavDropdown.Item>
           </LinkContainer>
-          <LinkContainer to="/admin/orderlist">
+          <LinkContainer to="/admin/order">
             <NavDropdown.Item>Orders</NavDropdown.Item>
           </LinkContainer>
-          <LinkContainer to="/admin/userlist">
+          <LinkContainer to="/admin/user">
             <NavDropdown.Item>Users</NavDropdown.Item>
           </LinkContainer>
         </NavDropdown>

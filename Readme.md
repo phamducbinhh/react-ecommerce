@@ -86,6 +86,14 @@
     1. show filters
     2. create api for searching products
     3. display results
+19. Create Admin Menu
+    1. define protected route component
+    2. define admin route component
+    3. add menu for admin in header
+20. Manage Products
+    1. create products list ui
+    2. implement backend api
+    3. fetch data
 
 POST – Create: Tạo dữ liệu mới
 GET – Read: Lấy dữ liệu về

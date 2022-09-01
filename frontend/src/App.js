@@ -16,6 +16,8 @@ import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import OrderHistoryScreen from "./Screen/OrderHistoryScreen";
 import ProfileScreen from "./Screen/ProfileScreen";
 import ProductListPage from "./Screen/ProductListPage";
+import DashBoardPage from "./modules/DashBoardPage";
+import ProductManage from "./modules/ProductManage";
 
 const App = () => {
   return (
@@ -44,7 +46,21 @@ const App = () => {
               {/* component lịch sử giao dịch */}
               <Route path="/orderhistory" element={<OrderHistoryScreen />} />
               {/* component trang cá nhân */}
-              <Route path="/profile" element={<ProfileScreen />} />
+              <Route
+                path="/profile"
+                element={
+                  // bảo vệ thông tin người dùng bằng cách bọc component ProtectedRouted
+                  <ProfileScreen />
+                }
+              />
+              {/* Admin Routes */}
+              <Route
+                path="/admin/dashboard"
+                element={<DashBoardPage />}
+              ></Route>
+              {/* product-manage */}
+              <Route path="/admin/products" element={<ProductManage />}></Route>
+              {/* error page */}
               <Route path="*" element={<ErrorPage />} />
             </Route>
           </Routes>

@@ -15,7 +15,6 @@ const generateToken = (user) => {
   );
 };
 
-
 //phân quyền tài khoản
 const isAuth = (req, res, next) => {
   const authorization = req.headers.authorization;
@@ -34,4 +33,13 @@ const isAuth = (req, res, next) => {
   }
 };
 
-export { generateToken, isAuth };
+//phân quyền admin
+const isAdmin = (req, res, next) => {
+  if (req.user && req.user.isAdmin) {
+    next();
+  } else {
+    res.status(401).send({ message: "Invalid Admin Token" });
+  }
+};
+
+export { generateToken, isAuth, isAdmin };

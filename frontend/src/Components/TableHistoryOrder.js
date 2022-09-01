@@ -21,7 +21,7 @@ const TableHistoryOrder = ({ order }) => {
         {order.length > 0 &&
           order.map((item) => (
             <tr key={item._id} className=" tr">
-              <td>{item._id}</td>
+              <td>{item._id.slice(0, 5)}</td>
               <td>{item.createdAt.substring(0, 10)}</td>
               <td>{item.totalPrice.toFixed(2)} $</td>
               <td>{item.isPaid ? item.paidAt.substring(0, 10) : "No"}</td>
