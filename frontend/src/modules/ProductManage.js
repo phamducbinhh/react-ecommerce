@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { initialState, reducer } from "../Reducer/reducerProductManage";
 import axios from "axios";
 import { useStore } from "../Context/Store-Context";
-import { Link, useLocation } from "react-router-dom";
-import Loading from "../Components/Loading/Loading";
-import MessageBox from "../Components/MessageBox";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Button from "../Components/button/Button";
+import TableProduct from "./TableProduct";
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -26,11 +26,15 @@ const Wrapper = styled.div`
   .text-bold {
     background-color: var(--clr-primary-7);
   }
+  @media only screen and (max-width: 740px) {
+    .add-product {
+      display: none;
+    }
+  }
 `;
 const ProductManage = () => {
   const { state } = useStore();
   const { userInfo } = state;
-  // const navigate = useNavigate();
   //reducerProductManage
   const [{ products, loading, error, pages }, dispatch] = useReducer(
     reducer,
@@ -53,42 +57,38 @@ const ProductManage = () => {
         //setState(data)
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (err) {
-        console.log(err);
+        alert(err);
       }
     };
     fetchData();
   }, [page, userInfo]);
 
+  // //hàm tạo bài viết mới
+  // const createHandler = async () => {
+  //   try {
+  //     dispatch({ type: "CREATE_REQUEST" });
+  //     const { data } = await axios.post(
+  //       "/api/products",
+  //       {},
+  //       {
+  //         headers: { Authorization: `Bearer ${userInfo.token}` },
+  //       }
+  //     );
+  //     dispatch({ type: "CREATE_SUCCESS" });
+  //     navigate(`/admin/product/${data.product._id}`);
+  //   } catch (err) {}
+  // };
+
   return (
-    <Wrapper>
-      <table className="section-center">
-        <thead className="thead">
-          <tr>
-            <th>ID</th>
-            <th>NAME</th>
-            <th>PRICE</th>
-            <th>CATEGORY</th>
-            <th>BRAN</th>
-            <th>ACTIONS</th>
-          </tr>
-        </thead>
-        <tbody>
-          {/* map data */}
-          {!loading &&
-            !error &&
-            products?.map((product) => (
-              <tr key={product._id}>
-                <td>{product._id.slice(0, 10)}</td>
-                <td>{product.name}</td>
-                <td>{product.price}</td>
-                <td>{product.category}</td>
-                <td>{product.brand}</td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
-      {loading && <Loading />}
-      {error && <MessageBox variant="danger">{error}</MessageBox>}
+    <Wrapper className="artical-center">
+      <div className="flex items-center justify-between add-product">
+        <h1>Products List</h1>
+        <Button kind="ship" style={{ width: "200px" }} to="/admin/product/add">
+          Create Products
+        </Button>
+      </div>
+      {/* tableProduct */}
+      <TableProduct loading={loading} error={error} products={products} />
       <div>
         {/* logic Phân trang phía client */}
         {newPages.map((x) => (

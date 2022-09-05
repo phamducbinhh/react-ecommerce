@@ -18,6 +18,8 @@ import ProfileScreen from "./Screen/ProfileScreen";
 import ProductListPage from "./Screen/ProductListPage";
 import DashBoardPage from "./modules/DashBoardPage";
 import ProductManage from "./modules/ProductManage";
+import ProductEditPage from "./modules/ProductEditPage";
+import ProductAddNew from "./modules/ProductAddNew";
 
 const App = () => {
   return (
@@ -46,13 +48,7 @@ const App = () => {
               {/* component lịch sử giao dịch */}
               <Route path="/orderhistory" element={<OrderHistoryScreen />} />
               {/* component trang cá nhân */}
-              <Route
-                path="/profile"
-                element={
-                  // bảo vệ thông tin người dùng bằng cách bọc component ProtectedRouted
-                  <ProfileScreen />
-                }
-              />
+              <Route path="/profile" element={<ProfileScreen />} />
               {/* Admin Routes */}
               <Route
                 path="/admin/dashboard"
@@ -60,6 +56,16 @@ const App = () => {
               ></Route>
               {/* product-manage */}
               <Route path="/admin/products" element={<ProductManage />}></Route>
+              {/* product-edit */}
+              <Route
+                path="/admin/product/:id"
+                element={<ProductEditPage />}
+              ></Route>
+              {/* product-add */}
+              <Route
+                path="/admin/product/add"
+                element={<ProductAddNew />}
+              ></Route>
               {/* error page */}
               <Route path="*" element={<ErrorPage />} />
             </Route>
