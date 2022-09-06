@@ -3,9 +3,11 @@ import styled from "styled-components";
 import { initialState, reducer } from "../Reducer/reducerProductManage";
 import axios from "axios";
 import { useStore } from "../Context/Store-Context";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Button from "../Components/button/Button";
 import TableProduct from "./TableProduct";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -34,12 +36,13 @@ const Wrapper = styled.div`
 `;
 const ProductManage = () => {
   const { state } = useStore();
+  const navigate = useNavigate();
   const { userInfo } = state;
   //reducerProductManage
-  const [{ products, loading, error, pages }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
+  const [
+    { products, loading, error, pages, loadingDelete, successDelete },
+    dispatch,
+  ] = useReducer(reducer, initialState);
   //lấy ra key trong mảng chứa page để thực hiện chức năng phân trang
   const newPages = [...Array(pages).keys()]; //Phương keys()thức này trả về một đối tượng Array Iterator mới có chứa các khóa cho mỗi chỉ mục trong mảng.
   const { search } = useLocation();
@@ -50,6 +53,7 @@ const ProductManage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        dispatch({ type: "FETCH_REQUEST" });
         // để lấy ra list dữ liệu products, bạn cần gửi request lên server với method GET
         const { data } = await axios.get(`/api/products/admin?page=${page}`, {
           headers: { Authorization: `Bearer ${userInfo.token}` },
@@ -57,38 +61,73 @@ const ProductManage = () => {
         //setState(data)
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (err) {
-        alert(err);
+        toast.error(err.message, {
+          pauseOnHover: false,
+          delay: 0,
+        });
       }
     };
-    fetchData();
-  }, [page, userInfo]);
+    //reset list product sau khi xóa
+    if (successDelete) {
+      dispatch({ type: "DELETE_RESET" });
+    } else {
+      fetchData();
+    }
+  }, [page, userInfo, successDelete]);
 
   // //hàm tạo bài viết mới
-  // const createHandler = async () => {
-  //   try {
-  //     dispatch({ type: "CREATE_REQUEST" });
-  //     const { data } = await axios.post(
-  //       "/api/products",
-  //       {},
-  //       {
-  //         headers: { Authorization: `Bearer ${userInfo.token}` },
-  //       }
-  //     );
-  //     dispatch({ type: "CREATE_SUCCESS" });
-  //     navigate(`/admin/product/${data.product._id}`);
-  //   } catch (err) {}
-  // };
+  const createHandler = async () => {
+    //thu vien confirm add-product
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't add product new!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, create a new product!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          dispatch({ type: "CREATE_REQUEST" });
+          const { data } = await axios.post(
+            "/api/products",
+            {},
+            {
+              headers: { Authorization: `Bearer ${userInfo.token}` },
+            }
+          );
+          dispatch({ type: "CREATE_SUCCESS" });
+          navigate(`/admin/product/${data.product._id}`);
+        } catch (err) {
+          toast.error(err.message, {
+            pauseOnHover: false,
+            delay: 0,
+          });
+          dispatch({ type: "CREATE_FAIL" });
+        }
+        Swal.fire("New Product!", "has been created successfully", "success");
+      }
+    });
+  };
 
   return (
     <Wrapper className="artical-center">
       <div className="flex items-center justify-between add-product">
         <h1>Products List</h1>
-        <Button kind="ship" style={{ width: "200px" }} to="/admin/product/add">
+        <Button kind="ship" style={{ width: "200px" }} onClick={createHandler}>
           Create Products
         </Button>
       </div>
       {/* tableProduct */}
-      <TableProduct loading={loading} error={error} products={products} />
+      <TableProduct
+        loading={loading}
+        error={error}
+        products={products}
+        loadingDelete={loadingDelete}
+        successDelete={successDelete}
+        dispatch={dispatch}
+      />
       <div>
         {/* logic Phân trang phía client */}
         {newPages.map((x) => (

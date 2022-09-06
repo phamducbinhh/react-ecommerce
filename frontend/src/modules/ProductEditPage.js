@@ -14,6 +14,7 @@ import Loading from "../Components/Loading/Loading";
 import MessageBox from "../Components/MessageBox";
 import Swal from "sweetalert2";
 import ImageUpload from "../Components/ImageUpload";
+import { toast } from "react-toastify";
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -140,6 +141,7 @@ const ProductEditPage = () => {
     try {
       dispatch({ type: "UPLOAD_REQUEST" });
       //api upload cloudinary
+      //POST – Create: Tạo dữ liệu mới
       const { data } = await axios.post("/api/upload", bodyFormData, {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -156,7 +158,10 @@ const ProductEditPage = () => {
       });
       setValue(image, data.secure_url);
     } catch (err) {
-      alert("error", err.message);
+      toast.error(err.message, {
+        pauseOnHover: false,
+        delay: 0,
+      });
       dispatch({ type: "UPLOAD_FAIL", payload: getError(err) });
     }
   };

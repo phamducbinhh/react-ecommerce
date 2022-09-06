@@ -23,6 +23,22 @@ const reducer = (state, action) => {
     case "CREATE_SUCCESS": {
       return { ...state, loading: false };
     }
+    case "CREATE_FAIL": {
+      return { ...state, loading: false };
+    }
+    //delete-product
+    case "DELETE_REQUEST": {
+      return { ...state, loadingDeleted: true, successDelete: false };
+    }
+    case "DELETE_SUCCESS": {
+      return { ...state, loadingDeleted: false, successDelete: true };
+    }
+    case "DELETE_FAILURE": {
+      return { ...state, loadingDeleted: false, successDelete: false };
+    }
+    case "DELETE_RESET": {
+      return { ...state, loadingDelete: false, successDelete: false };
+    }
     default:
       throw new Error();
   }

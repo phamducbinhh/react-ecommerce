@@ -30,9 +30,9 @@ const OrderHistoryScreen = () => {
 
   useEffect(() => {
     const getData = async () => {
-      //thực hiện trạng thái yêu cầu lấy dữ liệu từ api
-      dispatch({ type: "FETCH_REQUEST" });
       try {
+        //thực hiện trạng thái yêu cầu lấy dữ liệu từ api
+        dispatch({ type: "FETCH_REQUEST" });
         //lấy dũ liệu từ api trả về dữ liệu các đơn đã đặt hàng trước đó
         // để lấy ra list dữ liệu, bạn cần gửi request lên server với method GET
         const { data } = await axios.get(`/api/orders/mine`, {

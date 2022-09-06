@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useReducer, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 import { initialState, reducer } from "../Reducer/reducerFilter";
 import { getError } from "../Util/constanst";
 
@@ -50,7 +51,10 @@ export const UseHookSearchData = () => {
         const { data } = await axios.get(`/api/products/categories`);
         setCategories(data);
       } catch (err) {
-        console.log(err);
+        toast.error(err.message, {
+          pauseOnHover: false,
+          delay: 0,
+        });
       }
     };
     fetchCategories();

@@ -60,8 +60,8 @@ const ProductScreen = () => {
   useEffect(() => {
     const fetchData = async () => {
       //loading = true
-      dispatch({ type: "FETCH_REQUEST" });
       try {
+        dispatch({ type: "FETCH_REQUEST" });
         //call api theo slug từng sản phẩm
         // để lấy ra list dữ liệu, bạn cần gửi request lên server với method GET
         const result = await axios.get(`/api/products/slug/${slug}`);

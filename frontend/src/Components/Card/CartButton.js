@@ -133,7 +133,7 @@ const CartButton = () => {
           <LinkContainer to="/admin/products">
             <NavDropdown.Item>Products</NavDropdown.Item>
           </LinkContainer>
-          <LinkContainer to="/admin/order">
+          <LinkContainer to="/admin/orders">
             <NavDropdown.Item>Orders</NavDropdown.Item>
           </LinkContainer>
           <LinkContainer to="/admin/user">

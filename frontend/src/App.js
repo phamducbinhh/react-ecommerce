@@ -18,11 +18,10 @@ import ProfileScreen from "./Screen/ProfileScreen";
 import ProductListPage from "./Screen/ProductListPage";
 import DashBoardPage from "./modules/DashBoardPage";
 import ProductManage from "./modules/ProductManage";
-import ProductAddNew from "./modules/ProductAddNew";
 import ProtectedRoute from "./admin/ProtectedRoute";
 import AdminRoute from "./admin/AdminRoute";
-import ProductUpdatePage from "./modules/ProductUpdatePage";
 import ProductEditPage from "./modules/ProductEditPage";
+import OrderListPage from "./modules/OrderListPage";
 
 const App = () => {
   return (
@@ -96,17 +95,16 @@ const App = () => {
                 path="/admin/product/:id"
                 element={
                   <AdminRoute>
-                    {/* <ProductUpdatePage /> */}
                     <ProductEditPage />
                   </AdminRoute>
                 }
               ></Route>
-              {/* product-add */}
+              {/* orderList-admin */}
               <Route
-                path="/admin/product/add"
+                path="/admin/orders"
                 element={
                   <AdminRoute>
-                    <ProductAddNew />
+                    <OrderListPage />
                   </AdminRoute>
                 }
               ></Route>

@@ -55,7 +55,7 @@ productRouter.post(
 
 //api update product
 productRouter.put(
-  '/:id',
+  "/:id",
   isAuth,
   isAdmin,
   expressAsyncHandler(async (req, res) => {
@@ -71,9 +71,9 @@ productRouter.put(
       product.countInStock = req.body.countInStock;
       product.description = req.body.description;
       await product.save();
-      res.send({ message: 'Product Updated' });
+      res.send({ message: "Product Updated" });
     } else {
-      res.status(404).send({ message: 'Product Not Found' });
+      res.status(404).send({ message: "Product Not Found" });
     }
   })
 );
@@ -218,4 +218,19 @@ productRouter.post(
   })
 );
 
+//delete api
+productRouter.delete(
+  "/:id",
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const product = await Product.findById(req.params.id);
+    if (product) {
+      await product.remove();
+      res.send({ message: "Product Deleted" });
+    } else {
+      res.status(404).send({ message: "Product Not Found" });
+    }
+  })
+);
 export default productRouter;

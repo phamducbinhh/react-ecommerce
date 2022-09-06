@@ -1,10 +1,22 @@
 import express from "express";
 import expressAsyncHandler from "express-async-handler";
 import Order from "../models/orderModel.js";
-import { isAuth } from "../utils.js";
+import { isAdmin, isAuth } from "../utils.js";
 
 //api cho đơn đặt hàng khi yêu cầu POST
 const orderRouter = express.Router();
+
+//api quản lý đơn đặt hàng của tất cả các user
+orderRouter.get(
+  "/",
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const orders = await Order.find().populate("user", "name");
+    res.send(orders);
+  })
+);
+
 orderRouter.post(
   "/",
   isAuth,

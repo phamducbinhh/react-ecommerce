@@ -51,7 +51,7 @@ const ProductFeauture = () => {
         ) : error ? (
           <div>{error}</div>
         ) : (
-          products.map((product) => (
+          products.slice(0,6).map((product) => (
             <Product key={product.slug} data={product} />
           ))
         )}

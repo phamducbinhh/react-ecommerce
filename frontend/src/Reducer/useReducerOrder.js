@@ -1,3 +1,4 @@
+//quản lý danh sách lịch sử đặt hàng
 const reducer = (state, action) => {
   switch (action.type) {
     case "FETCH_REQUEST":

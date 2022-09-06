@@ -5,6 +5,8 @@ import "./index.scss";
 import App from "./App";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./Util/constanst";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -12,6 +14,7 @@ root.render(
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <App />
+        <ToastContainer />
       </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>

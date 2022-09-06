@@ -1,7 +1,8 @@
 import Axios from "axios";
-import React, { useEffect } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { NavLink, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import styled from "styled-components";
 import Swal from "sweetalert2";
 import Button from "../Components/button/Button";
@@ -70,8 +71,11 @@ const SignUpScreen = () => {
         timer: 1500,
       });
       navigate("/");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      toast.error(err.message, {
+        pauseOnHover: false,
+        delay: 0,
+      });
       Swal.fire("Failed", "Login Failed", "warning");
     }
   };
