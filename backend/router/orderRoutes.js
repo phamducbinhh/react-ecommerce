@@ -5,7 +5,6 @@ import { isAdmin, isAuth } from "../utils.js";
 
 //api cho đơn đặt hàng khi yêu cầu POST
 const orderRouter = express.Router();
-
 //api quản lý đơn đặt hàng của tất cả các user
 orderRouter.get(
   "/",
@@ -81,6 +80,22 @@ orderRouter.put(
 
       const updatedOrder = await order.save();
       res.send({ message: "Order Paid", order: updatedOrder });
+    } else {
+      res.status(404).send({ message: "Order Not Found" });
+    }
+  })
+);
+
+//xóa order
+orderRouter.delete(
+  "/:id",
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const order = await Order.findById(req.params.id);
+    if (order) {
+      await order.remove();
+      res.send({ message: "Order Deleted" });
     } else {
       res.status(404).send({ message: "Order Not Found" });
     }

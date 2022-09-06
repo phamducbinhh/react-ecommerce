@@ -24,7 +24,7 @@ const OrderListPage = () => {
   const { userInfo } = state;
 
   //reducerAdminOrder
-  const [{ loading, error, orders }, dispatch] = useReducer(
+  const [{ loading, error, orders, successDelete }, dispatch] = useReducer(
     reducer,
     initialState
   );
@@ -47,10 +47,13 @@ const OrderListPage = () => {
         dispatch({ type: "FETCH_ERROR", payload: getError(err) });
       }
     };
-    fetchData();
-  }, [userInfo]);
-
-  console.log(orders);
+    //cập nhật lại bảng ngay sau khi xóa
+    if (successDelete) {
+      dispatch({ type: "DELETE_RESET" });
+    } else {
+      fetchData();
+    }
+  }, [successDelete, userInfo]);
 
   return (
     <Wrapper className="artical-center">
@@ -60,7 +63,7 @@ const OrderListPage = () => {
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
-        <TableOrderList orders={orders} />
+        <TableOrderList orders={orders} dispatch={dispatch} />
       )}
     </Wrapper>
   );
