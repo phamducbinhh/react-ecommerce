@@ -48,14 +48,14 @@ const CartContent = () => {
       ))}
       <div className="link-container">
         <Link to="/" className="link-btn">
-          continue shopping
+          Tiếp Tục Mua Hàng
         </Link>
         <button
           type="button"
           className="link-btn clear-btn"
           onClick={() => handleClearAll(cart)}
         >
-          clear shopping cart
+          xóa tất cả sản phẩm
         </button>
       </div>
       <CartTotals cart={cart} />

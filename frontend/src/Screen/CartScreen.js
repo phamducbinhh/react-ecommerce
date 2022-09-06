@@ -22,9 +22,9 @@ const CartScreen = () => {
     return (
       <Wrapper className="page-100">
         <div className="empty">
-          <h2>Your cart is empty</h2>
+          <h2>Chưa có sản phẩm nào</h2>
           <Link to="/products" className="btn">
-            fill it
+            Mua Hàng
           </Link>
         </div>
       </Wrapper>

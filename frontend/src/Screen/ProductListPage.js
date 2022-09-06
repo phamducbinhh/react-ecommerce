@@ -26,7 +26,7 @@ const Wrapper = styled.div`
 const ProductListPage = () => {
   return (
     <main>
-      <PageHero title={"Products"} />
+      <PageHero title={"Sản Phẩm"} />
       <Wrapper className="page">
         <div className="section-center products">
           <Filter />

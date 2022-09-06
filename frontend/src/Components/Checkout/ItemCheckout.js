@@ -10,7 +10,7 @@ const ItemCheckout = () => {
   const { cart } = state;
   return (
     <Card.Body>
-      <Card.Title>Items</Card.Title>
+      <Card.Title>Sản Phẩm</Card.Title>
       <ListGroup variant="flush">
         {cart.cartItems.map((item) => (
           <ListGroup.Item key={item._id}>
@@ -19,7 +19,7 @@ const ItemCheckout = () => {
           </ListGroup.Item>
         ))}
       </ListGroup>
-      <Link to="/payment">Edit</Link>
+      <Link to="/payment">Sửa</Link>
     </Card.Body>
   );
 };

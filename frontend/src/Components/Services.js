@@ -8,12 +8,13 @@ const Services = () => {
       <div className="section-center">
         <article className="header">
           <h3>
-            custom furniture <br /> built only for you
+            Shop Thời Trang <br /> Theo Cách Của Bạn
           </h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-            dolorum debitis consectetur reprehenderit non aliquam voluptates
-            dolore aut vero consequuntur.
+            Toàn bộ sản phẩm do chính 25.December chụp ảnh thật 100% bạn hoàn
+            toàn có thể đặt niềm tin khi mua hàng online Nếu bạn không hài lòng
+            về sản phẩm, dịch vụ cskh hãy liên hệ cho chúng mình trước khi đánh
+            giá nhé !.
           </p>
         </article>
         <div className="services-center">

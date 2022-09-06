@@ -4,10 +4,10 @@ const CartColumns = () => {
   return (
     <Wrapper>
       <div className='content'>
-        <h5>item</h5>
-        <h5>price</h5>
-        <h5>quantity</h5>
-        <h5>subtotal</h5>
+        <h5>sản phẩm</h5>
+        <h5>giá</h5>
+        <h5>số lượng</h5>
+        <h5>tổng giá</h5>
         <span></span>
       </div>
       <hr />

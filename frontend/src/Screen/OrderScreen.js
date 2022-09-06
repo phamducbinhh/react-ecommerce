@@ -16,6 +16,7 @@ import OrderItem from "../Components/Order/OrderItem";
 import OrderProceed from "../Components/Order/OrderProceed";
 import { usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import Swal from "sweetalert2";
+import Heading from "../Layout/Heading";
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -76,7 +77,7 @@ const OrderScreen = () => {
         Swal.fire({
           position: "center",
           icon: "success",
-          title: "success",
+          title: "Thành Công",
           showConfirmButton: false,
           timer: 1500,
         });
@@ -141,7 +142,7 @@ const OrderScreen = () => {
     <MessageBox variant="danger">{error}</MessageBox>
   ) : (
     <Wrapper>
-      <h1 className="my-3 title-order">Order {orderId}</h1>
+      <Heading>Đơn Hàng {orderId}</Heading>
       <Row>
         <Col md={8}>
           <Card className="mb-3">

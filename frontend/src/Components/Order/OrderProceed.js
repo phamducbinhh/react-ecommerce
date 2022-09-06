@@ -16,30 +16,30 @@ const OrderProceed = ({
 }) => {
   return (
     <Card.Body>
-      <Card.Title>Order Summary</Card.Title>
+      <Card.Title>Thành Tiền</Card.Title>
       <ListGroup variant="flush">
         <ListGroup.Item>
           <Row>
-            <Col>Items</Col>
+            <Col>Tiền hàng</Col>
             <Col>${order.itemsPrice.toFixed(2)}</Col>
           </Row>
         </ListGroup.Item>
         <ListGroup.Item>
           <Row>
-            <Col>Shipping</Col>
+            <Col>Phí vận chuyển</Col>
             <Col>${order.shippingPrice.toFixed(2)}</Col>
           </Row>
         </ListGroup.Item>
         <ListGroup.Item>
           <Row>
-            <Col>Tax</Col>
+            <Col>Thuế</Col>
             <Col>${order.taxPrice.toFixed(2)}</Col>
           </Row>
         </ListGroup.Item>
         <ListGroup.Item>
           <Row>
             <Col>
-              <strong> Order Total</strong>
+              <strong>Tổng cộng</strong>
             </Col>
             <Col>
               <strong>${order.totalPrice.toFixed(2)}</strong>

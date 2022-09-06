@@ -45,7 +45,7 @@ const Payment = () => {
       <PageHero title={"Payment"} />
       <CheckOutStep step1 step2 step3 />
       <div className="payment">
-        <h1 className="mb-4 text-4xl font-semibold">Payment Method</h1>
+        <h1 className="mb-4 text-4xl font-semibold">Phương Thức Thanh Toán</h1>
         <Form onSubmit={handleSubmit}>
           <div className="mb-3">
             <Form.Check
@@ -68,7 +68,7 @@ const Payment = () => {
             />
           </div>
           <div className="mb-3">
-            <Button type="submit">Continue</Button>
+            <Button type="submit">Tiếp Tục</Button>
           </div>
         </Form>
       </div>

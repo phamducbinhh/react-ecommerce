@@ -15,29 +15,14 @@ import MessageBox from "../Components/MessageBox";
 import Swal from "sweetalert2";
 import ImageUpload from "../Components/ImageUpload";
 import { toast } from "react-toastify";
+import Heading from "../Layout/Heading";
 
 const Wrapper = styled.div`
   min-height: 100vh;
   padding: 40px;
-  .heading {
-    text-align: center;
-    font-weight: bold;
-    font-size: 40px;
-    margin-bottom: 55px;
-    color: var(--clr-primary-3);
-  }
   .form {
     max-width: 700px;
     margin: 50px auto;
-  }
-  @media only screen and (max-width: 740px) {
-    .logo {
-      width: 50px;
-    }
-    .heading {
-      font-size: 20px;
-      margin-bottom: 30px;
-    }
   }
 `;
 
@@ -119,7 +104,7 @@ const ProductEditPage = () => {
       Swal.fire({
         position: "center",
         icon: "success",
-        title: "Update success",
+        title: "Update Thành Công",
         showConfirmButton: false,
         timer: 1500,
       });
@@ -168,7 +153,7 @@ const ProductEditPage = () => {
 
   return (
     <Wrapper className="section">
-      <h1 className="heading">Update Product</h1>
+      <Heading>Cập Nhật Sản Phẩm</Heading>
       {loading && <Loading />}
       {error && <MessageBox variant="danger">{error}</MessageBox>}
       <form
@@ -178,21 +163,21 @@ const ProductEditPage = () => {
       >
         <div className="form-layout">
           <Field>
-            <Label htmlFor="Name">Name</Label>
+            <Label htmlFor="Name">Tên sản phẩm</Label>
             <Input
               name="name"
               type="text"
-              placeholder="Enter your Name"
+              placeholder="Tên sản phẩm"
               required
               control={control}
             ></Input>
           </Field>
           <Field>
-            <Label htmlFor="Slug">Slug</Label>
+            <Label htmlFor="Slug">Đường Dẫn</Label>
             <Input
               name="slug"
               type="text"
-              placeholder="Enter your Slug"
+              placeholder="Đường Dẫn"
               control={control}
               required
             ></Input>
@@ -200,21 +185,21 @@ const ProductEditPage = () => {
         </div>
         <div className="form-layout">
           <Field>
-            <Label htmlFor="Price">Price</Label>
+            <Label htmlFor="Price">Giá (vnđ)</Label>
             <Input
               name="price"
               type="text"
-              placeholder="Enter your Price"
+              placeholder="Giá (vnđ)"
               control={control}
               required
             ></Input>
           </Field>
           <Field>
-            <Label htmlFor="Image File">Image File</Label>
+            <Label htmlFor="Image File">Hình ảnh</Label>
             <Input
               name="image"
               type="text"
-              placeholder="Enter your Image File"
+              placeholder="Hình ảnh"
               control={control}
               required
             ></Input>
@@ -225,21 +210,21 @@ const ProductEditPage = () => {
         </div>
         <div className="form-layout">
           <Field>
-            <Label htmlFor="Category">Category</Label>
+            <Label htmlFor="Category">Danh Mục</Label>
             <Input
               name="category"
               type="text"
-              placeholder="Enter your Category"
+              placeholder="Danh Mục"
               control={control}
               required
             ></Input>
           </Field>
           <Field>
-            <Label htmlFor="Brand">Brand</Label>
+            <Label htmlFor="Brand">Thương hiệu</Label>
             <Input
               name="brand"
               type="text"
-              placeholder="Enter your Brand"
+              placeholder="Thương hiệu"
               control={control}
               required
             ></Input>
@@ -247,11 +232,11 @@ const ProductEditPage = () => {
         </div>
         <div className="form-layout">
           <Field>
-            <Label htmlFor="countInStock">Count In Stock</Label>
+            <Label htmlFor="countInStock">Số lượng</Label>
             <Input
               name="countInStock"
               type="text"
-              placeholder="Enter your Count In Stock"
+              placeholder="Số lượng"
               control={control}
               required
             ></Input>
@@ -273,7 +258,7 @@ const ProductEditPage = () => {
           isLoading={isSubmitting}
           disabled={isSubmitting}
         >
-          Update Product
+          Xác Nhận
         </Button>
       </form>
     </Wrapper>

@@ -26,13 +26,12 @@ const TableProduct = ({
   const deleteHandler = async (product) => {
     //thu vien confirm deletedc
     Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      text: "Bạn muốn xóa phần nầy!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Xác Nhận",
     }).then(async (result) => {
       if (result.isConfirmed) {
         //xoa truong user trong api
@@ -50,7 +49,7 @@ const TableProduct = ({
           });
           dispatch({ type: "DELETE_FAILURE" });
         }
-        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        Swal.fire("Deleted!", "Xóa Thành Công.", "success");
       }
     });
   };
@@ -60,11 +59,11 @@ const TableProduct = ({
         <thead className="thead">
           <tr>
             <th>ID</th>
-            <th>NAME</th>
-            <th>PRICE</th>
-            <th>CATEGORY</th>
-            <th>BRAN</th>
-            <th>ACTIONS</th>
+            <th>TÊN</th>
+            <th>GIÁ</th>
+            <th>DANH MỤC</th>
+            <th>NHÃN HIỆU</th>
+            <th>CHỈNH SỬA</th>
           </tr>
         </thead>
         <tbody>
@@ -73,7 +72,15 @@ const TableProduct = ({
             !error &&
             products?.map((product) => (
               <tr key={product._id}>
-                <td>{product._id.slice(0, 10)}</td>
+                <td>
+                  <div className="w-[100px] h-[70px] overflow-hidden">
+                    <img
+                      src={product.image}
+                      alt=""
+                      className="object-cover w-full h-full rounded-lg"
+                    />
+                  </div>
+                </td>
                 <td>{product.name}</td>
                 <td>{product.price}</td>
                 <td>{product.category}</td>

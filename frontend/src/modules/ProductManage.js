@@ -8,6 +8,7 @@ import Button from "../Components/button/Button";
 import TableProduct from "./TableProduct";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
+import Heading from "../Layout/Heading";
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -79,13 +80,12 @@ const ProductManage = () => {
   const createHandler = async () => {
     //thu vien confirm add-product
     Swal.fire({
-      title: "Are you sure?",
-      text: "You won't add product new!",
+      text: "Bạn muốn thêm sản phẩm mới!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, create a new product!",
+      confirmButtonText: "Xác Nhận!",
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
@@ -106,7 +106,7 @@ const ProductManage = () => {
           });
           dispatch({ type: "CREATE_FAIL" });
         }
-        Swal.fire("New Product!", "has been created successfully", "success");
+        Swal.fire("Sản Phẩm Mới!", "Thêm sản phẩm thành công", "success");
       }
     });
   };
@@ -114,11 +114,11 @@ const ProductManage = () => {
   return (
     <Wrapper className="artical-center">
       <div className="flex items-center justify-between add-product">
-        <h1>Products List</h1>
-        <Button kind="ship" style={{ width: "200px" }} onClick={createHandler}>
-          Create Products
-        </Button>
+        <Heading>Danh sách sản phẩm</Heading>
       </div>
+      <Button kind="ship" style={{ width: "200px" }} onClick={createHandler}>
+        Thêm Sản Phẩm
+      </Button>
       {/* tableProduct */}
       <TableProduct
         loading={loading}

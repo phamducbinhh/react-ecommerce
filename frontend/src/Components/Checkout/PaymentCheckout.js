@@ -8,11 +8,11 @@ const PaymentCheckout = () => {
   const { cart } = state;
   return (
     <Card.Body>
-      <Card.Title>Payment</Card.Title>
+      <Card.Title>Thanh Toán</Card.Title>
       <Card.Text>
-        <strong>Method:</strong> {cart.paymentMethod}
+        <strong>Phương Thức:</strong> {cart.paymentMethod}
       </Card.Text>
-        <Link to="/payment">Edit</Link>
+        <Link to="/payment">Sửa</Link>
  
     </Card.Body>
   );

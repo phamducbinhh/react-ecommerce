@@ -15,7 +15,7 @@ const SearchBox = () => {
         <input
           type="text"
           name="text"
-          placeholder="search"
+          placeholder="Tìm Kiếm"
           className="search-input"
           onChange={(e) => setSearch(e.target.value)}
         />

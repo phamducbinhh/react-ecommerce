@@ -73,30 +73,30 @@ const OrderCheckout = ({ type = "" }) => {
   }, [cart, navigate]);
   return (
     <Card.Body>
-      <Card.Title>Order Summary</Card.Title>
+      <Card.Title>Thành Tiền</Card.Title>
       <ListGroup variant="flush">
         <ListGroup.Item>
           <Row>
-            <Col>Items</Col>
+            <Col>Tiền hàng</Col>
             <Col>$ {cart.itemsPrice.toFixed(2)}</Col>
           </Row>
         </ListGroup.Item>
         <ListGroup.Item>
           <Row>
-            <Col>Shipping</Col>
+            <Col>Phí vận chuyển</Col>
             <Col>$ {cart.shippingPrice.toFixed(2)}</Col>
           </Row>
         </ListGroup.Item>
         <ListGroup.Item>
           <Row>
-            <Col>Tax</Col>
+            <Col>Thuế</Col>
             <Col>$ {cart.taxPrice.toFixed(2)}</Col>
           </Row>
         </ListGroup.Item>
         <ListGroup.Item>
           <Row>
             <Col>
-              <strong> Order Total</strong>
+              <strong>Tổng cộng</strong>
             </Col>
             <Col>
               <strong>${cart.totalPrice.toFixed(2)}</strong>
@@ -111,7 +111,7 @@ const OrderCheckout = ({ type = "" }) => {
               onClick={placeOrderHandler}
               disabled={cart.cartItems.length === 0}
             >
-              Place Order
+              Đặt Hàng
             </Button>
           </div>
           {loading && <Loading />}

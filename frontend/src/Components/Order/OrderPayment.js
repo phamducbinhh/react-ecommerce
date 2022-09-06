@@ -5,14 +5,14 @@ import MessageBox from "../MessageBox";
 const OrderPayment = ({order}) => {
   return (
     <Card.Body>
-      <Card.Title>Payment</Card.Title>
+      <Card.Title>Thanh Toán</Card.Title>
       <Card.Text>
-        <strong>Method:</strong> {order.paymentMethod}
+        <strong>Phương Thức:</strong> {order.paymentMethod}
       </Card.Text>
       {order.isPaid ? (
-        <MessageBox variant="success">Paid at {order.paidAt}</MessageBox>
+        <MessageBox variant="success">Đã Thanh Toán {order.paidAt}</MessageBox>
       ) : (
-        <MessageBox variant="danger">Not Paid</MessageBox>
+        <MessageBox variant="danger">Chưa Thanh Toán</MessageBox>
       )}
     </Card.Body>
   );

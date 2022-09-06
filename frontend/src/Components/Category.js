@@ -10,7 +10,7 @@ const Category = () => {
   return (
     <Fragment>
       <div className="mb-4">
-        <h5 className="font-semibold">category</h5>
+        <h5 className="font-semibold">Danh Mục</h5>
         <ul>
           <li className="mb-2 text-sm font-medium">
             <Link
@@ -33,7 +33,7 @@ const Category = () => {
         </ul>
       </div>
       <div className="mb-4">
-        <h5 className="font-semibold">Price</h5>
+        <h5 className="font-semibold">Giá</h5>
         <ul>
           <li className="mb-2 text-xs font-medium ">
             <Link
@@ -56,7 +56,7 @@ const Category = () => {
         </ul>
       </div>
       <div className="mb-4">
-        <h5 className="font-semibold"> Customer Review</h5>
+        <h5 className="font-semibold"> Yêu Thích</h5>
         <ul className="text-xs ">
           {ratings.map((r) => (
             <li key={r.name} className="mb-2">

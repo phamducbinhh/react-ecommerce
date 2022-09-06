@@ -1,31 +1,35 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import React from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 const Banner = () => {
   return (
-    <Wrapper className='section-center'>
-      <article className='content'>
+    <Wrapper className="section-center">
+      <article className="content">
         <h1>
           design your <br />
           comfort zone
         </h1>
         <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto, at
-          sed omnis corporis doloremque possimus velit! Repudiandae nisi odit,
-          aperiam odio ducimus, obcaecati libero et quia tempora excepturi quis
-          alias?
+          Comfy Sloth công cụ so sánh giá Online, cung cấp thông tin giá cả...
+          Bằng khả năng sẵn có cùng sự nỗ lực không ngừng, chúng tôi đã tổng hợp
+          hơn 12 triệu sản phẩm, giúp bạn có thể so sánh giá, tìm giá rẻ nhất
+          trước khi mua.
         </p>
-        <Link to='/products' className='btn hero-btn'>
-          shop now
+        <Link to="/products" className="btn hero-btn">
+          Sản Phẩm
         </Link>
       </article>
-      <article className='img-container'>
-        <img src="/images/pa.jpg"alt='nice table' className='main-img' />
-        <img src="/images/burberry2.jpg" alt='person working' className='accent-img' />
+      <article className="img-container">
+        <img src="/images/pa.jpg" alt="nice table" className="main-img" />
+        <img
+          src="/images/burberry2.jpg"
+          alt="person working"
+          className="accent-img"
+        />
       </article>
     </Wrapper>
-  )
-}
+  );
+};
 
 const Wrapper = styled.section`
   min-height: 60vh;
@@ -76,7 +80,7 @@ const Wrapper = styled.section`
       border-radius: var(--radius);
     }
     .img-container::before {
-      content: '';
+      content: "";
       position: absolute;
       width: 10%;
       height: 80%;
@@ -86,6 +90,6 @@ const Wrapper = styled.section`
       border-radius: var(--radius);
     }
   }
-`
+`;
 
-export default Banner
+export default Banner;

@@ -9,17 +9,12 @@ import Label from "../Components/label/Label";
 import { useStore } from "../Context/Store-Context";
 import { initialState, reducerUpdate } from "../Reducer/reducerUpdate";
 import Swal from "sweetalert2";
+import Heading from "../Layout/Heading";
+import LoadingBox from "../Components/Loading/LoadingBox";
 
 const Wrapper = styled.div`
   min-height: 100vh;
   padding: 40px;
-  .heading {
-    text-align: center;
-    font-weight: bold;
-    font-size: 40px;
-    margin-bottom: 55px;
-    color: var(--clr-primary-3);
-  }
   .form {
     max-width: 400px;
     margin: 50px auto;
@@ -86,14 +81,14 @@ const ProfileScreen = () => {
   };
   return (
     <Wrapper>
-      <h1 className="heading">Profile</h1>
+      <Heading>Thông Tin Tài Khoản</Heading>
       <form className="form" onSubmit={handleSubmit(handleUpdateProfile)}>
         <Field>
-          <Label htmlFor="name">Name</Label>
+          <Label htmlFor="name">Tên</Label>
           <Input
             name="name"
             type="text"
-            placeholder="Enter your Name"
+            placeholder="Nhập Tên"
             required
             control={control}
           ></Input>
@@ -103,27 +98,27 @@ const ProfileScreen = () => {
           <Input
             name="email"
             type="text"
-            placeholder="Enter your Email"
+            placeholder="Nhập Email"
             required
             control={control}
           ></Input>
         </Field>
         <Field>
-          <Label htmlFor="password">Password</Label>
+          <Label htmlFor="password">Mật Khẩu</Label>
           <Input
             name="password"
             type="password"
-            placeholder="Enter your Password"
+            placeholder="Nhập Mật Khẩu"
             required
             control={control}
           ></Input>
         </Field>
         <Field>
-          <Label htmlFor="confirmPassword">Confirm Password</Label>
+          <Label htmlFor="confirmPassword">Xác Nhận Mật Khẩu</Label>
           <Input
             name="confirmPassword"
             type="password"
-            placeholder="Enter your Confirm Password"
+            placeholder="Nhập Lại Mật Khẩu"
             required
             control={control}
           ></Input>
@@ -134,8 +129,9 @@ const ProfileScreen = () => {
           isLoading={isSubmitting}
           disabled={isSubmitting}
         >
-          Update
+          Xác Nhận
         </Button>
+        {loadingUpdate && <LoadingBox />}
       </form>
     </Wrapper>
   );

@@ -44,7 +44,7 @@ const CartTotals = ({ cart }) => {
       <div>
         <article>
           <h5>
-            Subtotal :
+            giá :
             <span className="text-green-400">
               {/* tính tổng tất cả các sản phẩm hiện có */}(
               {cart.cartItems.reduce((a, c) => a + c.quantity, 0)} items) : $
@@ -53,11 +53,11 @@ const CartTotals = ({ cart }) => {
             </span>
           </h5>
           <p>
-            shipping fee :<span>...</span>
+            miễn phí ship :<span>...</span>
           </p>
           <hr />
           <h4>
-            order total :
+            tổng giá:
             <span className="font-bold text-green-400">
               ${cart.cartItems.reduce((a, c) => a + c.price * c.quantity, 0)}
             </span>
@@ -65,11 +65,11 @@ const CartTotals = ({ cart }) => {
         </article>
         {userInfo ? (
           <Link to="/shipping" className="btn">
-            proceed to checkout
+            thanh toán
           </Link>
         ) : (
           <Link to="/signin" className="btn">
-            Login
+            đăng nhập
           </Link>
         )}
       </div>

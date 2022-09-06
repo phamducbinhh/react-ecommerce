@@ -78,7 +78,7 @@ const ShippingScreen = () => {
   }, []);
   return (
     <Wrapper className="section">
-      <PageHero title={"shipping"} />
+      <PageHero title={"đơn hàng"} />
       {/* tiến trình  */}
       <CheckOutStep step1 step2 />
       <form
@@ -87,51 +87,51 @@ const ShippingScreen = () => {
         onSubmit={handleSubmit(handleSubmitShipping)}
       >
         <Field>
-          <Label htmlFor="fullname">FullName</Label>
+          <Label htmlFor="fullname">Tên</Label>
           <Input
             name="fullname"
             type="text"
-            placeholder="Enter your fullname"
+            placeholder="Nhâp Tên"
             required
             control={control}
           ></Input>
         </Field>
         <Field>
-          <Label htmlFor="address">Address</Label>
+          <Label htmlFor="address">Địa Chỉ</Label>
           <Input
             name="address"
             type="text"
-            placeholder="Enter your address"
+            placeholder="Nhâp Địa Chỉ"
             control={control}
             required
           ></Input>
         </Field>
         <Field>
-          <Label htmlFor="city">City</Label>
+          <Label htmlFor="city">Thành Phố</Label>
           <Input
             name="city"
             type="text"
-            placeholder="Enter your City"
+            placeholder="Nhâp Thành Phố"
             control={control}
             required
           ></Input>
         </Field>
         <Field>
-          <Label htmlFor="postalCode">Postal Code</Label>
+          <Label htmlFor="postalCode">Mã Bưu</Label>
           <Input
             name="postalCode"
             type="text"
-            placeholder="Enter your Postal Code"
+            placeholder="Nhâp Mã Bưu"
             control={control}
             required
           ></Input>
         </Field>
         <Field>
-          <Label htmlFor="country">Country</Label>
+          <Label htmlFor="country">Quốc Gia</Label>
           <Input
             name="country"
             type="text"
-            placeholder="Enter your Country"
+            placeholder="Nhâp Quốc Gia"
             control={control}
             required
           ></Input>
@@ -142,7 +142,7 @@ const ShippingScreen = () => {
           isLoading={isSubmitting}
           disabled={isSubmitting}
         >
-          Continue
+          Tiếp Tục
         </Button>
       </form>
     </Wrapper>

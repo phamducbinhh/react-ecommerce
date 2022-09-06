@@ -8,12 +8,12 @@ const TableHistoryOrder = ({ order }) => {
     <table className="section-center">
       <thead className="thead">
         <tr>
-          <th>ID</th>
-          <th>DATE</th>
-          <th>TOTAL</th>
-          <th>PAID</th>
-          <th>DELIVERED</th>
-          <th>ACTIONS</th>
+          <th>MÃ ĐƠN</th>
+          <th>NGÀY ĐẶT</th>
+          <th>TỔNG CỘNG</th>
+          <th>THANH TOÁN</th>
+          <th>GIAO HÀNG</th>
+          <th>CHỈNH SỬA</th>
         </tr>
       </thead>
       <tbody>

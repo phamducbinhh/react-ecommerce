@@ -5,19 +5,19 @@ import MessageBox from "../MessageBox";
 const OrderShipping = ({ order }) => {
   return (
     <Card.Body>
-      <Card.Title>Shipping</Card.Title>
+      <Card.Title>Đơn Hàng</Card.Title>
       <Card.Text>
-        <strong>Name:</strong> {order.shippingAddress.fullName} <br />
-        <strong>Address: </strong> {order.shippingAddress.address},
+        <strong>Sản Phẩm:</strong> {order.shippingAddress.fullName} <br />
+        <strong>Địa Chỉ: </strong> {order.shippingAddress.address}
         {order.shippingAddress.city}, {order.shippingAddress.postalCode},
         {order.shippingAddress.country}
       </Card.Text>
       {order.isDelivered ? (
         <MessageBox variant="success">
-          Delivered at {order.deliveredAt}
+          Đang Giao Hàng {order.deliveredAt}
         </MessageBox>
       ) : (
-        <MessageBox variant="danger">Not Delivered</MessageBox>
+        <MessageBox variant="danger">Chưa Giao Hàng</MessageBox>
       )}
     </Card.Body>
   );

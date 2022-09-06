@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const OrderItem = ({ order }) => {
   return (
     <Card.Body>
-      <Card.Title>Items</Card.Title>
+      <Card.Title>Sản Phẩm</Card.Title>
       <ListGroup variant="flush">
         {order.orderItems.map((item) => (
           <ListGroup.Item key={item._id}>

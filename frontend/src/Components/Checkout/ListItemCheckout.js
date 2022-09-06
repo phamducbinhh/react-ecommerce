@@ -8,7 +8,7 @@ const ListItemCheckout = ({ item }) => {
     <div>
       <Row className="align-items-center">
         <Col md={6} className="flex items-center">
-          <img src={item.image} alt={item.name} className="image" />
+          <img src={item.image} alt={item.name} className="mr-3 image" />
           <Link to={`/product/${item.slug}`}>{item.name}</Link>
         </Col>
         <Col md={3}>

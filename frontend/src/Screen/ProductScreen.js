@@ -83,7 +83,7 @@ const ProductScreen = () => {
       ) : (
         <div className="section section-center page">
           <Link to="/" className="btn">
-            Back to Home
+            quay lại
           </Link>
           <div className="product-center">
             <div className="product-image">
@@ -99,19 +99,19 @@ const ProductScreen = () => {
               <h5 className="price">${products.price}</h5>
 
               <p className="info">
-                <span>Description : </span>
+                <span>mô tả : </span>
                 {products.description}
               </p>
               <p className="info">
-                <span>Brand :</span>
+                <span>nhãn hiệu :</span>
                 {products.brand}
               </p>
               <p className="info">
-                <span>Status :</span>
+                <span>trạng thái :</span>
                 {products.countInStock > 0 ? (
-                  <span className="text-green-500">In Stock</span>
+                  <span className="text-green-500">còn hàng</span>
                 ) : (
-                  <span className="text-red-500">Unavailable</span>
+                  <span className="text-red-500">hết hàng</span>
                 )}
               </p>
               <hr />

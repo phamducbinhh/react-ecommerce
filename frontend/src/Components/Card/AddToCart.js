@@ -16,6 +16,7 @@ const Wrapper = styled.div`
     margin-top: 1rem;
     width: 140px;
     text-align: center;
+    font-size: 12px;
   }
 `;
 const AddToCart = ({ product }) => {
@@ -47,7 +48,7 @@ const AddToCart = ({ product }) => {
       <div className="">
         {product.countInStock > 0 && (
           <Link to={"/cart"} className="btn" onClick={handleAddToCart}>
-            Add to cart
+            thêm vào giỏ hàng
           </Link>
         )}
       </div>

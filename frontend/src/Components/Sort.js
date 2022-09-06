@@ -73,7 +73,7 @@ const Sort = () => {
     <Wrapper>
       <div className="btn-container"></div>
       <div className="flex">
-        {countProducts === 0 ? "No" : countProducts} Results
+        {countProducts === 0 ? "No" : countProducts} Sản Phẩm
         {query !== "all" && " : " + query}
         {category !== "all" && " : " + category}
         {price !== "all" && " : Price " + price}
@@ -89,7 +89,7 @@ const Sort = () => {
       </div>
       <hr />
       <form>
-        <label htmlFor="sort">sort by</label>
+        <label htmlFor="sort">Sắp xếp theo</label>
         <select
           name="sort"
           id="sort"
@@ -99,10 +99,10 @@ const Sort = () => {
             navigate(getFilterUrl({ order: e.target.value }));
           }}
         >
-          <option value="newest">Newest Arrivals</option>
-          <option value="lowest">Price: Low to High</option>
-          <option value="highest">Price: High to Low</option>
-          <option value="toprated">Avg. Customer Reviews</option>
+          <option value="newest">mới nhẩt</option>
+          <option value="lowest">giá: thấp đến cao</option>
+          <option value="highest">giá: cao đến thấp</option>
+          <option value="toprated">đánh giá. độ yêu thích</option>
         </select>
       </form>
     </Wrapper>

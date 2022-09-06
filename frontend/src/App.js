@@ -16,12 +16,12 @@ import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import OrderHistoryScreen from "./Screen/OrderHistoryScreen";
 import ProfileScreen from "./Screen/ProfileScreen";
 import ProductListPage from "./Screen/ProductListPage";
-import DashBoardPage from "./modules/DashBoardPage";
 import ProductManage from "./modules/ProductManage";
 import ProtectedRoute from "./admin/ProtectedRoute";
 import AdminRoute from "./admin/AdminRoute";
 import ProductEditPage from "./modules/ProductEditPage";
 import OrderListPage from "./modules/OrderListPage";
+import UserListPage from "./modules/UserListPage";
 
 const App = () => {
   return (
@@ -73,14 +73,6 @@ const App = () => {
                 }
               />
               {/* Admin Routes */}
-              <Route
-                path="/admin/dashboard"
-                element={
-                  <AdminRoute>
-                    <DashBoardPage />
-                  </AdminRoute>
-                }
-              ></Route>
               {/* product-manage */}
               <Route
                 path="/admin/products"
@@ -105,6 +97,15 @@ const App = () => {
                 element={
                   <AdminRoute>
                     <OrderListPage />
+                  </AdminRoute>
+                }
+              ></Route>
+              {/* User-admin */}
+              <Route
+                path="/admin/user"
+                element={
+                  <AdminRoute>
+                    <UserListPage />
                   </AdminRoute>
                 }
               ></Route>

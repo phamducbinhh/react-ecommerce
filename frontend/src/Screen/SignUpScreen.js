@@ -10,29 +10,14 @@ import Field from "../Components/field/Field";
 import Input from "../Components/input/Input";
 import Label from "../Components/label/Label";
 import { useStore } from "../Context/Store-Context";
+import Heading from "../Layout/Heading";
 
 const Wrapper = styled.div`
   min-height: 100vh;
   padding: 40px;
-  .heading {
-    text-align: center;
-    font-weight: bold;
-    font-size: 40px;
-    margin-bottom: 55px;
-    color: var(--clr-primary-3);
-  }
   .form {
     max-width: 800px;
     margin: 50px auto;
-  }
-  @media only screen and (max-width: 740px) {
-    .logo {
-      width: 50px;
-    }
-    .heading {
-      font-size: 20px;
-      margin-bottom: 30px;
-    }
   }
 `;
 
@@ -66,7 +51,7 @@ const SignUpScreen = () => {
       Swal.fire({
         position: "center",
         icon: "success",
-        title: "Login success",
+        title: "Đăng Nhập Thành Công",
         showConfirmButton: false,
         timer: 1500,
       });
@@ -82,15 +67,15 @@ const SignUpScreen = () => {
 
   return (
     <Wrapper>
-      <h1 className="heading">Sign Up</h1>
+      <Heading>Đăng Ký Tài Khoản</Heading>
       <form className="form" onSubmit={handleSubmit(handleSignUp)}>
         <div className="form-layout">
           <Field>
-            <Label htmlFor="name">Name</Label>
+            <Label htmlFor="name">Tên</Label>
             <Input
               name="name"
               type="text"
-              placeholder="Enter your Name"
+              placeholder="Nhập Tên"
               required
               control={control}
             ></Input>
@@ -100,7 +85,7 @@ const SignUpScreen = () => {
             <Input
               name="email"
               type="text"
-              placeholder="Enter your Email"
+              placeholder="Nhập Email"
               required
               control={control}
             ></Input>
@@ -108,31 +93,31 @@ const SignUpScreen = () => {
         </div>
         <div className="form-layout">
           <Field>
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password">Mật Khẩu</Label>
             <Input
               name="password"
               type="password"
-              placeholder="Enter your Password"
+              placeholder="Nhập Mật Khẩu"
               control={control}
               required
             ></Input>
           </Field>
           <Field>
-            <Label htmlFor="password">Confirm Password</Label>
+            <Label htmlFor="confirmPassword">Xác Nhận Mật Khẩu</Label>
             <Input
               name="confirmPassword"
               type="password"
-              placeholder="Enter your Confirm Password"
-              control={control}
+              placeholder="Nhập Lại Mật Khẩu"
               required
+              control={control}
             ></Input>
           </Field>
         </div>
         <div className="flex justify-between w-full mx-auto">
           <div className="mb-4 font-semibold text-gray-800">
-            You had have an account?{" "}
+            Bạn Đã Có Tài Khoản?{" "}
             <NavLink to={"/signin"} className="font-bold text-primary">
-              Login
+              Đăng Nhập
             </NavLink>{" "}
           </div>
           <Button
@@ -141,7 +126,7 @@ const SignUpScreen = () => {
             isLoading={isSubmitting}
             disabled={isSubmitting}
           >
-            Sign Up
+            Đăng Ký
           </Button>
         </div>
       </form>

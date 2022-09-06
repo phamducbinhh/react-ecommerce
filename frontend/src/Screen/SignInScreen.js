@@ -9,29 +9,14 @@ import Axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useStore } from "../Context/Store-Context";
+import Heading from "../Layout/Heading";
 
 const Wrapper = styled.div`
   min-height: 100vh;
   padding: 40px;
-  .heading {
-    text-align: center;
-    font-weight: bold;
-    font-size: 40px;
-    margin-bottom: 55px;
-    color: var(--clr-primary-3);
-  }
   .form {
     max-width: 400px;
     margin: 50px auto;
-  }
-  @media only screen and (max-width: 740px) {
-    .logo {
-      width: 50px;
-    }
-    .heading {
-      font-size: 20px;
-      margin-bottom: 30px;
-    }
   }
 `;
 const SignInScreen = () => {
@@ -58,7 +43,7 @@ const SignInScreen = () => {
       Swal.fire({
         position: "center",
         icon: "success",
-        title: "Login success",
+        title: "Đăng Nhập Thành Công",
         showConfirmButton: false,
         timer: 1500,
       });
@@ -70,32 +55,32 @@ const SignInScreen = () => {
 
   return (
     <Wrapper>
-      <h1 className="heading">Login</h1>
+      <Heading>Đăng Nhập</Heading>
       <form className="form" onSubmit={handleSubmit(handleSubmitForm)}>
         <Field>
           <Label htmlFor="email">Email</Label>
           <Input
             name="email"
             type="text"
-            placeholder="Enter your Email"
+            placeholder="Nhập Email"
             required
             control={control}
           ></Input>
         </Field>
         <Field>
-          <Label htmlFor="password">Password</Label>
+          <Label htmlFor="password">Mật Khẩu</Label>
           <Input
             name="password"
             type="password"
-            placeholder="Enter your Password"
+            placeholder="Nhập Mật Khẩu"
             control={control}
             required
           ></Input>
         </Field>
         <div className="mb-4 font-semibold text-gray-800">
-          You had have an account?{" "}
+          Chưa Có Tài Khoản?{" "}
           <NavLink to={"/signup"} className="font-bold text-primary">
-            Sign Up
+            Đăng ký
           </NavLink>{" "}
         </div>
         <Button
@@ -104,7 +89,7 @@ const SignInScreen = () => {
           isLoading={isSubmitting}
           disabled={isSubmitting}
         >
-          Login
+          Đăng Nhập
         </Button>
       </form>
     </Wrapper>

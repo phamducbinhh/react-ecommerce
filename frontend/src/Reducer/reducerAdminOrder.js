@@ -13,13 +13,13 @@ const reducer = (state, action) => {
     }
     //delete-orders
     case "DELETE_REQUEST": {
-      return { ...state, loadingDeleted: true, successDelete: false };
+      return { ...state, loadingDelete: true, successDelete: false };
     }
     case "DELETE_SUCCESS": {
-      return { ...state, loadingDeleted: false, successDelete: true };
+      return { ...state, loadingDelete: false, successDelete: true };
     }
     case "DELETE_FAILURE": {
-      return { ...state, loadingDeleted: false, successDelete: false };
+      return { ...state, loadingDelete: false, successDelete: false };
     }
     case "DELETE_RESET": {
       return { ...state, loadingDelete: false, successDelete: false };

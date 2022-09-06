@@ -8,6 +8,7 @@ import ShippingCheckout from "../Components/Checkout/ShippingCheckout";
 import PaymentCheckout from "../Components/Checkout/PaymentCheckout";
 import ItemCheckout from "../Components/Checkout/ItemCheckout";
 import OrderCheckout from "../Components/Checkout/OrderCheckout";
+import Heading from "../Layout/Heading";
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -23,7 +24,7 @@ const PlayOrderScreen = () => {
   return (
     <Wrapper>
       <CheckOutStep step1 step2 step3 step4 />
-      <h1 className="my-3">Preview Order</h1>
+      <Heading>THÔNG TIN NHẬN HÀNG</Heading>
       <Row>
         <Col md={8}>
           <Card className="mb-3">

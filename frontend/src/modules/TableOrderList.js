@@ -16,13 +16,12 @@ const TableOrderList = ({ orders, dispatch }) => {
   const deleteOrder = async (order) => {
     //thu vien confirm deletedc
     Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      text: "Bạn muốn xóa phần nầy!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Xác Nhận",
     }).then(async (result) => {
       if (result.isConfirmed) {
         //xoa orders trong api
@@ -40,7 +39,7 @@ const TableOrderList = ({ orders, dispatch }) => {
           });
           dispatch({ type: "DELETE_FAILURE" });
         }
-        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        Swal.fire("Deleted!", "Xóa Thành Công.", "success");
       }
     });
   };
@@ -48,13 +47,13 @@ const TableOrderList = ({ orders, dispatch }) => {
     <table className="section-center">
       <thead className="thead">
         <tr>
-          <th>ID</th>
-          <th>USER</th>
-          <th>DATE</th>
-          <th>TOTAL</th>
-          <th>PAID</th>
-          <th>DELIVERED</th>
-          <th>ACTIONS</th>
+          <th>MÃ ĐƠN</th>
+          <th>KHÁCH HÀNG</th>
+          <th>NGÀY ĐẶT</th>
+          <th>TỔNG CỘNG</th>
+          <th>THANH TOÁN</th>
+          <th>GIAO HÀNG</th>
+          <th>CHỈNH SỬA</th>
         </tr>
       </thead>
       <tbody>

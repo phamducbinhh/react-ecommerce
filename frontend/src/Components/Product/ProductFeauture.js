@@ -42,7 +42,7 @@ const ProductFeauture = () => {
   return (
     <Wrapper className="section">
       <div className="title">
-        <h2>featured products</h2>
+        <h2>Sản Phẩm Nổi Bật</h2>
         <div className="underline"></div>
       </div>
       <div className="section-center featured">
@@ -58,7 +58,7 @@ const ProductFeauture = () => {
       </div>
       <div className="btn-wrap">
         <Link to="/products" className="btn">
-          all products
+          Xem Thêm
         </Link>
       </div>
     </Wrapper>

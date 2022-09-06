@@ -2,17 +2,17 @@ import { GiCompass, GiDiamondHard, GiStabbedNote } from "react-icons/gi";
 export const links = [
   {
     id: 1,
-    text: "home",
+    text: "Trang Chủ",
     url: "/",
   },
   {
     id: 2,
-    text: "about",
+    text: "Giới Thiệu",
     url: "/about",
   },
   {
     id: 3,
-    text: "products",
+    text: "Sản Phẩm",
     url: "/products",
   },
 ];
@@ -21,20 +21,20 @@ export const services = [
   {
     id: 1,
     icon: <GiCompass />,
-    title: "mission",
-    text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi",
+    title: "Sứ Mệnh",
+    text: "Bản thân khách hàng, khách hàng sẽ có thể theo đuổi hoạt động quảng cáo của công ty. Những thú vui, những Bằng cách dung túng cho kẻ tham nhũng, bằng cách từ chối họ, họ không biết ý muốn của sự vật, nhưng họ không bao giờ đến từ đâu",
   },
   {
     id: 2,
     icon: <GiDiamondHard />,
-    title: "vision",
-    text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi",
+    title: "Tầm Nhìn",
+    text: "Bản thân khách hàng, khách hàng sẽ có thể theo đuổi hoạt động quảng cáo của công ty. Những thú vui, những Bằng cách dung túng cho kẻ tham nhũng, bằng cách từ chối họ, họ không biết ý muốn của sự vật, nhưng họ không bao giờ đến từ đâu",
   },
   {
     id: 3,
     icon: <GiStabbedNote />,
-    title: "history",
-    text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi",
+    title: "Lịch Sử",
+    text: "Bản thân khách hàng, khách hàng sẽ có thể theo đuổi hoạt động quảng cáo của công ty. Những thú vui, những Bằng cách dung túng cho kẻ tham nhũng, bằng cách từ chối họ, họ không biết ý muốn của sự vật, nhưng họ không bao giờ đến từ đâu",
   },
 ];
 

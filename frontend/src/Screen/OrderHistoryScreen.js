@@ -5,6 +5,7 @@ import Loading from "../Components/Loading/Loading";
 import MessageBox from "../Components/MessageBox";
 import TableHistoryOrder from "../Components/TableHistoryOrder";
 import { useStore } from "../Context/Store-Context";
+import Heading from "../Layout/Heading";
 import { initialState, reducer } from "../Reducer/useReducerOrder";
 import { getError } from "../Util/constanst";
 
@@ -49,7 +50,7 @@ const OrderHistoryScreen = () => {
 
   return (
     <Wrapper className="artical-center">
-      <h1>Order History</h1>
+      <Heading>danh sách đơn hàng</Heading>
       {loading ? (
         <Loading />
       ) : error ? (

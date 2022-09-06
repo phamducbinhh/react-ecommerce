@@ -11,9 +11,9 @@ const Wrapper = styled.div`
   grid-template-columns: inherit;
   align-items: center;
   width: 225px;
+  font-size: 14px;
   .cart-btn {
     color: var(--clr-grey-1);
-    font-size: 18px;
     letter-spacing: var(--spacing);
     color: var(--clr-grey-1);
     display: flex;
@@ -24,6 +24,7 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     position: relative;
+    font-size: 20px;
     svg {
       height: 1.6rem;
       margin-left: 5px;
@@ -47,7 +48,6 @@ const Wrapper = styled.div`
   .title,
   .nav-link {
     color: hsl(209 61% 16%);
-    font-size: 18px;
     letter-spacing: 1.6px;
     line-height: 36px;
     margin-right: 10px;
@@ -62,13 +62,13 @@ const CartButton = () => {
   //hàm đăng xuất tài khoản
   const handleLogOut = () => {
     Swal.fire({
-      title: "Are you sure?",
-      text: "You want to log out",
+      title: "Bạn có chắc?",
+      text: "Bạn muốn đăng xuất tài khoản",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, Sign Out!",
+      confirmButtonText: "Đăng Xuất!",
     }).then(async (result) => {
       if (result.isConfirmed) {
         dispatch({ type: "USER_SIGNOUT" });
@@ -87,7 +87,6 @@ const CartButton = () => {
     <Wrapper className="cart-btn-wrapper">
       {/* giỏ hàng */}
       <Link to="/cart" className="cart-btn">
-        Cart
         <span className="cart-container">
           <FaShoppingCart />
           {cart.cartItems.length > 0 && (
@@ -106,20 +105,20 @@ const CartButton = () => {
           className="title"
         >
           <LinkContainer to="/profile">
-            <NavDropdown.Item>User Profile</NavDropdown.Item>
+            <NavDropdown.Item>Tài Khoản</NavDropdown.Item>
           </LinkContainer>
           <LinkContainer to="/orderhistory">
-            <NavDropdown.Item>Order History</NavDropdown.Item>
+            <NavDropdown.Item>Đã Mua</NavDropdown.Item>
           </LinkContainer>
           <NavDropdown.Divider />
           <Link className="dropdown-item" to="#signout" onClick={handleLogOut}>
-            Sign Out
+            Đăng Xuất
           </Link>
         </NavDropdown>
       ) : (
         <div className="flex items-center">
           <Link className="nav-link" to="/signin">
-            Login
+            Đăng Nhập
           </Link>
           <FaUserPlus />
         </div>
@@ -127,17 +126,14 @@ const CartButton = () => {
       {/* nếu là admin thì mới hiện*/}
       {userInfo && userInfo.isAdmin && (
         <NavDropdown title="Admin" id="admin-nav-dropdown">
-          <LinkContainer to="/admin/dashboard">
-            <NavDropdown.Item>Dashboard</NavDropdown.Item>
-          </LinkContainer>
           <LinkContainer to="/admin/products">
-            <NavDropdown.Item>Products</NavDropdown.Item>
+            <NavDropdown.Item>Sản Phẩm</NavDropdown.Item>
           </LinkContainer>
           <LinkContainer to="/admin/orders">
-            <NavDropdown.Item>Orders</NavDropdown.Item>
+            <NavDropdown.Item>Đơn Hàng</NavDropdown.Item>
           </LinkContainer>
           <LinkContainer to="/admin/user">
-            <NavDropdown.Item>Users</NavDropdown.Item>
+            <NavDropdown.Item>Người Dùng</NavDropdown.Item>
           </LinkContainer>
         </NavDropdown>
       )}

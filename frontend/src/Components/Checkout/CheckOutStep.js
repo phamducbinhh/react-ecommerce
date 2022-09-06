@@ -26,16 +26,16 @@ const CheckOutStep = ({ step1, step2, step3, step4 }) => {
     <Wrapper>
       <Row className="checkout-steps">
         <Col className={step1 ? "active" : ""}>
-          <Link to={"/signin"}>Sign-In</Link>
+          <Link to={"/signin"}>Đăng Nhập</Link>
         </Col>
         <Col className={step2 ? "active" : ""}>
-          <Link to={"/shipping"}>Shipping</Link>
+          <Link to={"/shipping"}>Địa Chỉ</Link>
         </Col>
         <Col className={step3 ? "active" : ""}>
-          <Link to={"/payment"}>Payment</Link>
+          <Link to={"/payment"}>Thanh Toán</Link>
         </Col>
         <Col className={step4 ? "active" : ""}>
-          <Link to={"/placeorder"}>Place order</Link>
+          <Link to={"/placeorder"}>Đặt Hàng</Link>
         </Col>
       </Row>
     </Wrapper>
