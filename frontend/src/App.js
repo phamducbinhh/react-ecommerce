@@ -18,8 +18,11 @@ import ProfileScreen from "./Screen/ProfileScreen";
 import ProductListPage from "./Screen/ProductListPage";
 import DashBoardPage from "./modules/DashBoardPage";
 import ProductManage from "./modules/ProductManage";
-import ProductEditPage from "./modules/ProductEditPage";
 import ProductAddNew from "./modules/ProductAddNew";
+import ProtectedRoute from "./admin/ProtectedRoute";
+import AdminRoute from "./admin/AdminRoute";
+import ProductUpdatePage from "./modules/ProductUpdatePage";
+import ProductEditPage from "./modules/ProductEditPage";
 
 const App = () => {
   return (
@@ -44,27 +47,68 @@ const App = () => {
               {/* component thanh toán */}
               <Route path="/placeorder" element={<PlayOrderScreen />} />
               {/* component hóa đơn */}
-              <Route path="/order/:id" element={<OrderScreen />} />
+              <Route
+                path="/order/:id"
+                element={
+                  <ProtectedRoute>
+                    <OrderScreen />
+                  </ProtectedRoute>
+                }
+              />
               {/* component lịch sử giao dịch */}
-              <Route path="/orderhistory" element={<OrderHistoryScreen />} />
+              <Route
+                path="/orderhistory"
+                element={
+                  <ProtectedRoute>
+                    <OrderHistoryScreen />
+                  </ProtectedRoute>
+                }
+              />
               {/* component trang cá nhân */}
-              <Route path="/profile" element={<ProfileScreen />} />
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute>
+                    <ProfileScreen />
+                  </ProtectedRoute>
+                }
+              />
               {/* Admin Routes */}
               <Route
                 path="/admin/dashboard"
-                element={<DashBoardPage />}
+                element={
+                  <AdminRoute>
+                    <DashBoardPage />
+                  </AdminRoute>
+                }
               ></Route>
               {/* product-manage */}
-              <Route path="/admin/products" element={<ProductManage />}></Route>
+              <Route
+                path="/admin/products"
+                element={
+                  <AdminRoute>
+                    <ProductManage />
+                  </AdminRoute>
+                }
+              ></Route>
               {/* product-edit */}
               <Route
                 path="/admin/product/:id"
-                element={<ProductEditPage />}
+                element={
+                  <AdminRoute>
+                    {/* <ProductUpdatePage /> */}
+                    <ProductEditPage />
+                  </AdminRoute>
+                }
               ></Route>
               {/* product-add */}
               <Route
                 path="/admin/product/add"
-                element={<ProductAddNew />}
+                element={
+                  <AdminRoute>
+                    <ProductAddNew />
+                  </AdminRoute>
+                }
               ></Route>
               {/* error page */}
               <Route path="*" element={<ErrorPage />} />

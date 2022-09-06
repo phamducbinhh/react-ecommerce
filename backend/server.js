@@ -5,6 +5,7 @@ import seedRouter from "./router/seedRoutes.js";
 import productRouter from "./router/productRoutes.js";
 import userRouter from "./router/userRoutes.js";
 import orderRouter from "./router/orderRoutes.js";
+import uploadRouter from "./router/uploadRoutes.js";
 
 // kết nối với mongo db
 dotenv.config();
@@ -26,6 +27,8 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/api/keys/paypal", (req, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID || "sb");
 });
+//api upload image
+app.use("/api/upload", uploadRouter);
 app.use("/api/seed", seedRouter);
 //gộp các api vào 1 component productRouter
 app.use("/api/products", productRouter);

@@ -13,6 +13,7 @@ import axios from "axios";
 import Loading from "../Components/Loading/Loading";
 import MessageBox from "../Components/MessageBox";
 import Swal from "sweetalert2";
+import ImageUpload from "../Components/ImageUpload";
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -45,15 +46,16 @@ const ProductEditPage = () => {
   const { id: productId } = params; //lấy id tự động react-router-dom
   const { state } = useStore();
   const { userInfo } = state;
-  const [{ products, loading, error }, dispatch] = useReducer(
+
+  const [{ loading, error, loadingUpload }, dispatch] = useReducer(
     reducer,
     initialState
   );
   //dùng react-hook-form
   const {
     control,
-    reset,
     handleSubmit,
+    setValue,
     formState: { isSubmitting },
   } = useForm();
 
@@ -64,7 +66,15 @@ const ProductEditPage = () => {
         dispatch({ type: "FETCH_REQUEST" });
         // để lấy ra dữ liệu của productsId, bạn cần gửi request lên server với method GET
         const { data } = await axios.get(`/api/products/${productId}`);
-        dispatch({ type: "FETCH_SUCCESS", payload: data });
+        dispatch({ type: "FETCH_SUCCESS" });
+        setValue("name", data.name);
+        setValue("slug", data.slug);
+        setValue("price", data.price);
+        setValue("category", data.category);
+        setValue("brand", data.brand);
+        setValue("countInStock", data.countInStock);
+        setValue("description", data.description);
+        setValue("image", data.image);
       } catch (err) {
         dispatch({
           type: "FETCH_FAIL",
@@ -73,25 +83,33 @@ const ProductEditPage = () => {
       }
     };
     fetchData();
-  }, [productId]);
+  }, [productId, setValue]);
 
   //update products
-  const handleUpdateProduct = async (values) => {
+  const handleUpdateProduct = async ({
+    name,
+    slug,
+    price,
+    image,
+    category,
+    brand,
+    countInStock,
+    description,
+  }) => {
     try {
       dispatch({ type: "UPDATE_REQUEST" });
       //sử dụng method put để cập nhật lại api
       await axios.put(
         `/api/products/${productId}`,
         {
-          _id: productId,
-          name: values.name,
-          slug: values.slug,
-          price: values.price,
-          category: values.category,
-          brand: values.brand,
-          countInStock: values.countInStock,
-          description: values.description,
-          image: values.image,
+          name,
+          slug,
+          price,
+          image,
+          category,
+          brand,
+          countInStock,
+          description,
         },
         {
           headers: { Authorization: `Bearer ${userInfo.token}` },
@@ -114,22 +132,34 @@ const ProductEditPage = () => {
       });
     }
   };
-
-  //reset về trạng thái mặc định trước khi update
-  useEffect(() => {
-    if (products) {
-      reset({
-        name: products.name,
-        slug: products.slug,
-        price: products.price,
-        category: products.category,
-        brand: products.brand,
-        countInStock: products.countInStock,
-        description: products.description,
-        image: products.image,
+  //upload image
+  const uploadFileHandler = async (e, image = "image") => {
+    const file = e.target.files[0];
+    const bodyFormData = new FormData();
+    bodyFormData.append("file", file);
+    try {
+      dispatch({ type: "UPLOAD_REQUEST" });
+      //api upload cloudinary
+      const { data } = await axios.post("/api/upload", bodyFormData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          authorization: `Bearer ${userInfo.token}`,
+        },
       });
+      dispatch({ type: "UPLOAD_SUCCESS" });
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Upload success",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      setValue(image, data.secure_url);
+    } catch (err) {
+      alert("error", err.message);
+      dispatch({ type: "UPLOAD_FAIL", payload: getError(err) });
     }
-  }, [reset, productId, products]);
+  };
 
   return (
     <Wrapper className="section">
@@ -184,7 +214,8 @@ const ProductEditPage = () => {
               required
             ></Input>
             {/* choose image */}
-            <Input name="file"type="file" control={control} required></Input>
+            <ImageUpload onChange={uploadFileHandler} />
+            {loadingUpload && <Loading></Loading>}
           </Field>
         </div>
         <div className="form-layout">

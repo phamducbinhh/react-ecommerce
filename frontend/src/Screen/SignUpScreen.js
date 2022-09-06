@@ -55,6 +55,7 @@ const SignUpScreen = () => {
       //đăng ký tài khoản gửi lên api bao gồm các thông tin name,email,password
       //để lưu dữ liệu, bạn cần gửi request lên server với method POST
       const { data } = await Axios.post("/api/users/signup", {
+        //tương tự setName(e.target.name)
         name: values.name,
         email: values.email,
         password: values.password,

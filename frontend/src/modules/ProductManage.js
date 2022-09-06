@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { initialState, reducer } from "../Reducer/reducerProductManage";
 import axios from "axios";
 import { useStore } from "../Context/Store-Context";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Button from "../Components/button/Button";
 import TableProduct from "./TableProduct";
 
