@@ -29,6 +29,7 @@ const TableOrderList = ({ orders, dispatch }) => {
           dispatch({ type: "DELETE_REQUEST" });
           //Method Deleted để xóa
           await axios.delete(`/api/orders/${order._id}`, {
+            //mô tả Bearer Token cấp quyền truy cập cho người dùng khi có token hợp lệ.
             headers: { Authorization: `Bearer ${userInfo.token}` },
           });
           dispatch({ type: "DELETE_SUCCESS" });
@@ -69,7 +70,7 @@ const TableOrderList = ({ orders, dispatch }) => {
               {order.isDelivered ? order.deliveredAt.substring(0, 10) : "No"}
             </td>
             <td>
-              <div className="flex items-center gap-x-3">
+              <div className="flex items-center justify-center gap-x-3">
                 <ActionView
                   onClick={() => {
                     navigate(`/order/${order._id}`);

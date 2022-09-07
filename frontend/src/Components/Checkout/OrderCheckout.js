@@ -7,7 +7,6 @@ import { useStore } from "../../Context/Store-Context";
 import { useNavigate } from "react-router-dom";
 import { initialState, reducerOrder } from "../../Reducer/reducerOrder";
 import Axios from "axios";
-import Loading from "../Loading/Loading";
 import Button from "../button/Button";
 
 const OrderCheckout = ({ type = "" }) => {
@@ -15,7 +14,7 @@ const OrderCheckout = ({ type = "" }) => {
   const { state, dispatch: ctxDispatch } = useStore();
   const { cart, userInfo } = state;
   const navigate = useNavigate();
-  //khai báo 1 useReducer mới
+  //khai báo 1 useReducer mới reducerOrder
   const [{ loading }, dispatch] = useReducer(reducerOrder, initialState);
 
   //làm tròn số
@@ -110,11 +109,11 @@ const OrderCheckout = ({ type = "" }) => {
               kind="ghost"
               onClick={placeOrderHandler}
               disabled={cart.cartItems.length === 0}
+              isLoading={loading}
             >
               Đặt Hàng
             </Button>
           </div>
-          {loading && <Loading />}
         </ListGroup.Item>
       </ListGroup>
     </Card.Body>

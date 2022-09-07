@@ -115,10 +115,10 @@ const ProductManage = () => {
     <Wrapper className="artical-center">
       <div className="flex items-center justify-between add-product">
         <Heading>Danh sách sản phẩm</Heading>
+        <Button kind="ship" style={{ width: "200px" }} onClick={createHandler}>
+          Thêm Sản Phẩm
+        </Button>
       </div>
-      <Button kind="ship" style={{ width: "200px" }} onClick={createHandler}>
-        Thêm Sản Phẩm
-      </Button>
       {/* tableProduct */}
       <TableProduct
         loading={loading}

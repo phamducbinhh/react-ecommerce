@@ -61,7 +61,7 @@ const SignInScreen = () => {
           <Label htmlFor="email">Email</Label>
           <Input
             name="email"
-            type="text"
+            type="email"
             placeholder="Nhập Email"
             required
             control={control}

@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   grid-template-columns: inherit;
   align-items: center;
   width: 225px;
-  font-size: 14px;
+  font-size: 16px;
   .cart-btn {
     color: var(--clr-grey-1);
     letter-spacing: var(--spacing);
@@ -24,7 +24,6 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     position: relative;
-    font-size: 20px;
     svg {
       height: 1.6rem;
       margin-left: 5px;
@@ -88,6 +87,7 @@ const CartButton = () => {
       {/* giỏ hàng */}
       <Link to="/cart" className="cart-btn">
         <span className="cart-container">
+          Cart
           <FaShoppingCart />
           {cart.cartItems.length > 0 && (
             <span className="cart-value">
@@ -116,7 +116,7 @@ const CartButton = () => {
           </Link>
         </NavDropdown>
       ) : (
-        <div className="flex items-center">
+        <div className="flex items-center ">
           <Link className="nav-link" to="/signin">
             Đăng Nhập
           </Link>

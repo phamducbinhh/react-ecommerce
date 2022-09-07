@@ -56,9 +56,9 @@ const TableProduct = ({
   return (
     <Fragment>
       <table className="section-center">
-        <thead className="thead">
+        <thead className="uppercase thead">
           <tr>
-            <th>ID</th>
+            <th>ảnh</th>
             <th>TÊN</th>
             <th>GIÁ</th>
             <th>DANH MỤC</th>
@@ -73,11 +73,11 @@ const TableProduct = ({
             products?.map((product) => (
               <tr key={product._id}>
                 <td>
-                  <div className="w-[100px] h-[70px] overflow-hidden">
+                  <div className="max-w-[300px] h-[70px] overflow-hidden flex justify-center items-center mb-2">
                     <img
                       src={product.image}
                       alt=""
-                      className="object-cover w-full h-full rounded-lg"
+                      className="object-cover w-[100px] h-full rounded-lg"
                     />
                   </div>
                 </td>
@@ -86,7 +86,7 @@ const TableProduct = ({
                 <td>{product.category}</td>
                 <td>{product.brand}</td>
                 <td>
-                  <div className="flex items-center gap-x-3">
+                  <div className="flex items-center justify-center gap-x-3">
                     <ActionEdit
                       onClick={() => navigate(`/admin/product/${product._id}`)}
                     />

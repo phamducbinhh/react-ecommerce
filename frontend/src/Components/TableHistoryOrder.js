@@ -29,15 +29,17 @@ const TableHistoryOrder = ({ order }) => {
                 {item.isDelivered ? item.deliveredAt.substring(0, 10) : "No"}
               </td>
               <td>
-                <Button
-                  type="button"
-                  kind="ship"
-                  onClick={() => {
-                    navigate(`/order/${item._id}`);
-                  }}
-                >
-                  Details
-                </Button>
+                <div className="flex items-center justify-center gap-x-3">
+                  <Button
+                    type="button"
+                    kind="ship"
+                    onClick={() => {
+                      navigate(`/order/${item._id}`);
+                    }}
+                  >
+                    Details
+                  </Button>
+                </div>
               </td>
             </tr>
           ))}

@@ -5,6 +5,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import Loading from "../Loading/Loading";
+import { useStore } from "../../Context/Store-Context";
+import Button from "../button/Button";
 
 const OrderProceed = ({
   order,
@@ -13,7 +15,11 @@ const OrderProceed = ({
   createOrder,
   onApprove,
   onError,
+  deliverOrderHandler,
+  loadingDeliver,
 }) => {
+  const { state } = useStore();
+  const { userInfo } = state;
   return (
     <Card.Body>
       <Card.Title>Thành Tiền</Card.Title>
@@ -60,6 +66,21 @@ const OrderProceed = ({
               </div>
             )}
             {loadingPay && <Loading></Loading>}
+          </ListGroup.Item>
+        )}
+        {/* xác nhận giao hàng */}
+        {userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+          <ListGroup.Item>
+            <div className="d-grid">
+              <Button
+                type="button"
+                kind="ghost"
+                onClick={deliverOrderHandler}
+                isLoading={loadingDeliver}
+              >
+                Xác Nhận Giao Hàng
+              </Button>
+            </div>
           </ListGroup.Item>
         )}
       </ListGroup>

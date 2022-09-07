@@ -17,6 +17,7 @@ import OrderProceed from "../Components/Order/OrderProceed";
 import { usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import Swal from "sweetalert2";
 import Heading from "../Layout/Heading";
+import { toast } from "react-toastify";
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -38,8 +39,18 @@ const OrderScreen = () => {
   const navigate = useNavigate();
 
   //lấy từ useReducerOrder
-  const [{ loading, error, order, successPay, loadingPay }, dispatch] =
-    useReducer(reducer, initialState);
+  const [
+    {
+      loading,
+      error,
+      order,
+      successPay,
+      loadingPay,
+      loadingDeliver,
+      successDeliver,
+    },
+    dispatch,
+  ] = useReducer(reducer, initialState);
 
   //tạo reducer của PayPal
   const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
@@ -93,7 +104,7 @@ const OrderScreen = () => {
     console.log(getError(err));
   };
 
-  //xử lý logic chính
+  //xử lý logic hiển thị  đơn hàng trả về
   useEffect(() => {
     const fetchOrder = async () => {
       try {
@@ -113,10 +124,18 @@ const OrderScreen = () => {
       return navigate("/signin");
     }
     //điều kiện tránh trùng id người dùng khi có hóa đơn trùng nhau
-    if (!order._id || successPay || (order._id && order._id !== orderId)) {
+    if (
+      !order._id ||
+      successPay ||
+      successDeliver ||
+      (order._id && order._id !== orderId)
+    ) {
       fetchOrder();
       if (successPay) {
         dispatch({ type: "PAY_RESET" });
+      }
+      if (successDeliver) {
+        dispatch({ type: "DELIVER_RESET" });
       }
     } else {
       const loadPaypalScript = async () => {
@@ -134,7 +153,34 @@ const OrderScreen = () => {
       };
       loadPaypalScript();
     }
-  }, [order, userInfo, orderId, navigate, paypalDispatch, successPay]);
+  }, [
+    order,
+    userInfo,
+    orderId,
+    navigate,
+    paypalDispatch,
+    successPay,
+    successDeliver,
+  ]);
+
+  //logic xử lý xác nhận giao hàng
+  const deliverOrderHandler = async () => {
+    try {
+      dispatch({ type: "DELIVER_REQUEST" });
+      const { data } = await axios.put(
+        `/api/orders/${order._id}/deliver`,
+        {},
+        {
+          headers: { authorization: `Bearer ${userInfo.token}` },
+        }
+      );
+      dispatch({ type: "DELIVER_SUCCESS", payload: data });
+      Swal.fire("Sản Phẩm Mới!", "Giao Hàng Thành Công", "success");
+    } catch (err) {
+      toast.error(getError(err));
+      dispatch({ type: "DELIVER_FAIL" });
+    }
+  };
 
   return loading ? (
     <Loading></Loading>
@@ -168,6 +214,8 @@ const OrderScreen = () => {
               createOrder={createOrder}
               onApprove={onApprove}
               onError={onError}
+              deliverOrderHandler={deliverOrderHandler}
+              loadingDeliver={loadingDeliver}
             />
           </Card>
         </Col>

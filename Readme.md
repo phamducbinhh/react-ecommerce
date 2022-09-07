@@ -1,4 +1,14 @@
-POST – Create: Tạo dữ liệu mới
-GET – Read: Lấy dữ liệu về
-PUT – Update: Cập nhật dữ liệu
-DELETE – Delete: Xóa dữ liệu
+\*Front End : ReactJs
+\*Back End : NodeJS
+
+\*Chức năng User :
+-Đặt Hàng ,
+-Mua hàng ,
+-Thanh Toán PayPal,
+-Cập nhật thông tin
+
+\*Chức năng Admin :
+-Quản lý sản phẩm,
+-Quản lý người dùng,
+-Quản lý đơn hàng
+-Thêm sửa xóa update...

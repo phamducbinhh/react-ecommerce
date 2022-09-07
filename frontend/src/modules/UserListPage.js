@@ -24,7 +24,7 @@ const UserListPage = () => {
   const { userInfo } = state;
 
   //reducerUserAdmin
-  const [{ users, loading, error }, dispatch] = useReducer(
+  const [{ users, loading, error, successDelete }, dispatch] = useReducer(
     reducer,
     initialState
   );
@@ -47,8 +47,12 @@ const UserListPage = () => {
         dispatch({ type: "FETCH_ERROR" });
       }
     };
-    fetchData();
-  }, [userInfo]);
+    if (successDelete) {
+      dispatch({ type: "DELETE_RESET" });
+    } else {
+      fetchData();
+    }
+  }, [successDelete, userInfo]);
 
   return (
     <Wrapper className="artical-center">

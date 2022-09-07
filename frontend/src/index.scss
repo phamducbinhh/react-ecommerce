@@ -133,7 +133,7 @@ hr {
   body {
     font-size: 1rem;
   }
-  th{
+  th {
     font-size: 12px;
   }
   h1,
@@ -250,4 +250,11 @@ hr {
   border: 0;
   width: 4px;
   border-radius: 2px;
+}
+
+th,
+td,
+tr {
+  border: 1px solid #ccc;
+  text-align: center;
 }

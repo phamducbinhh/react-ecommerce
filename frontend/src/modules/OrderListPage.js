@@ -9,7 +9,6 @@ import MessageBox from "../Components/MessageBox";
 import { toast } from "react-toastify";
 import { getError } from "../Util/constanst";
 import Heading from "../Layout/Heading";
-import LoadingBox from "../Components/Loading/LoadingBox";
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -26,7 +25,7 @@ const OrderListPage = () => {
   const { userInfo } = state;
 
   //reducerAdminOrder
-  const [{ loading, error, orders, successDelete,loadingDelete }, dispatch] = useReducer(
+  const [{ loading, error, orders, successDelete }, dispatch] = useReducer(
     reducer,
     initialState
   );
@@ -60,7 +59,6 @@ const OrderListPage = () => {
   return (
     <Wrapper className="artical-center">
       <Heading>Danh sách đơn hàng</Heading>
-      {loadingDelete && <LoadingBox></LoadingBox>}
       {loading ? (
         <Loading />
       ) : error ? (

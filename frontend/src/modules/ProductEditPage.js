@@ -45,13 +45,15 @@ const ProductEditPage = () => {
     formState: { isSubmitting },
   } = useForm();
 
-  //call api từ backend
+  //get  api từ backend
   useEffect(() => {
     const fetchData = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
         // để lấy ra dữ liệu của productsId, bạn cần gửi request lên server với method GET
-        const { data } = await axios.get(`/api/products/${productId}`);
+        const { data } = await axios.get(`/api/products/${productId}`, {
+          headers: { Authorization: `Bearer ${userInfo.token}` },
+        });
         dispatch({ type: "FETCH_SUCCESS" });
         setValue("name", data.name);
         setValue("slug", data.slug);
@@ -69,7 +71,7 @@ const ProductEditPage = () => {
       }
     };
     fetchData();
-  }, [productId, setValue]);
+  }, [productId, setValue, userInfo]);
 
   //update products
   const handleUpdateProduct = async ({
