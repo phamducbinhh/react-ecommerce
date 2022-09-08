@@ -43,25 +43,23 @@ const TableUserList = ({ users, dispatch }) => {
     });
   };
   return (
-    <table className="section-center">
-      <thead className="thead">
-        <tr>
-          <th>ID</th>
-          <th>TÊN</th>
-          <th>EMAIL</th>
-          <th>VAI TRÒ</th>
-          <th>CHỈNH SỬA</th>
-        </tr>
-      </thead>
+    <table className="rwd-table">
       <tbody>
+        <tr>
+          <th>id</th>
+          <th>tên</th>
+          <th>email</th>
+          <th>vai trò</th>
+          <th>chỉnh sửa</th>
+        </tr>
         {/* map data */}
         {users.map((user) => (
           <tr key={user._id}>
-            <td>{user._id.slice(0, 5)}</td>
-            <td>{user.name}</td>
-            <td>{user.email}</td>
-            <td>{user.isAdmin ? "Admin" : "User"}</td>
-            <td>
+            <td data-th="id">{user._id.slice(0, 5)}</td>
+            <td data-th="tên">{user.name}</td>
+            <td data-th="email">{user.email}</td>
+            <td data-th="vai trò">{user.isAdmin ? "Admin" : "User"}</td>
+            <td data-th="chỉnh sửa">
               <div className="flex items-center justify-center gap-x-3">
                 <ActionView
                   onClick={() => navigate(`/admin/user/${user._id}`)}

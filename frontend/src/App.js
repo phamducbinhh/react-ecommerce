@@ -2,7 +2,7 @@ import React, { Fragment, lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import { StoreProvider } from "./Context/Store-Context";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
-const LayoutMain = lazy(() => import("./Layout/LayoutMain"));
+import LayoutMain from "./Layout/LayoutMain";
 const CartScreen = lazy(() => import("./Screen/CartScreen"));
 const ErrorPage = lazy(() => import("./Screen/ErrorPage"));
 const HomeScreen = lazy(() => import("./Screen/HomeScreen"));

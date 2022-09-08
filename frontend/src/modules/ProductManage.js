@@ -13,12 +13,6 @@ import Heading from "../Layout/Heading";
 const Wrapper = styled.div`
   min-height: 100vh;
   padding: 40px;
-  thead {
-    height: 50px;
-  }
-  tr {
-    height: 70px;
-  }
   div {
     text-align: center;
     margin-top: 20px;
@@ -125,7 +119,6 @@ const ProductManage = () => {
         error={error}
         products={products}
         loadingDelete={loadingDelete}
-        successDelete={successDelete}
         dispatch={dispatch}
       />
       <div>

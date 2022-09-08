@@ -45,8 +45,8 @@ const TableOrderList = ({ orders, dispatch }) => {
     });
   };
   return (
-    <table className="section-center">
-      <thead className="thead">
+    <table className="rwd-table">
+      <tbody>
         <tr>
           <th>MÃ ĐƠN</th>
           <th>KHÁCH HÀNG</th>
@@ -56,20 +56,18 @@ const TableOrderList = ({ orders, dispatch }) => {
           <th>GIAO HÀNG</th>
           <th>CHỈNH SỬA</th>
         </tr>
-      </thead>
-      <tbody>
         {/* map data */}
         {orders.map((order) => (
           <tr key={order._id}>
-            <td>{order._id}</td>
-            <td>{order.user ? order.user.name : "DELETED USER"}</td>
-            <td>{order.createdAt.substring(0, 10)}</td>
-            <td>{order.totalPrice.toFixed(2)}</td>
-            <td>{order.isPaid ? order.paidAt.substring(0, 10) : "No"}</td>
-            <td>
+            <td data-th="mã đơn">{order._id}</td>
+            <td data-th="khách hàng">{order.user ? order.user.name : "DELETED USER"}</td>
+            <td data-th="ngày đặt">{order.createdAt.substring(0, 10)}</td>
+            <td data-th="tổng cộng">{order.totalPrice.toFixed(2)}</td>
+            <td data-th="thanh toán">{order.isPaid ? order.paidAt.substring(0, 10) : "No"}</td>
+            <td data-th="giao hàng">
               {order.isDelivered ? order.deliveredAt.substring(0, 10) : "No"}
             </td>
-            <td>
+            <td data-th="chỉnh sửa">
               <div className="flex items-center justify-center gap-x-3">
                 <ActionView
                   onClick={() => {

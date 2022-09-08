@@ -8,7 +8,7 @@ const CheckboxHook = ({ control, text, ...props }) => {
     defaultValue: false,
   });
   return (
-    <div class="styled-input-single">
+    <div className="styled-input-single">
       <input
         type="checkbox"
         value={props.value}

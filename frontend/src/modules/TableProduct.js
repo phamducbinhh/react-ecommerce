@@ -15,7 +15,6 @@ const TableProduct = ({
   error,
   products,
   loadingDelete,
-  successDelete,
   dispatch,
 }) => {
   const navigate = useNavigate();
@@ -55,24 +54,21 @@ const TableProduct = ({
   };
   return (
     <Fragment>
-      <table className="section-center">
-        <thead className="uppercase thead">
+      <table className="rwd-table">
+        <tbody>
           <tr>
             <th>ảnh</th>
-            <th>TÊN</th>
-            <th>GIÁ</th>
-            <th>DANH MỤC</th>
-            <th>NHÃN HIỆU</th>
-            <th>CHỈNH SỬA</th>
+            <th>tên</th>
+            <th>giá</th>
+            <th>danh mục</th>
+            <th>nhãn hiệu</th>
+            <th>chỉnh sửa</th>
           </tr>
-        </thead>
-        <tbody>
-          {/* map data */}
           {!loading &&
             !error &&
             products?.map((product) => (
               <tr key={product._id}>
-                <td>
+                <td data-th="ảnh">
                   <div className="max-w-[300px] h-[70px] overflow-hidden flex justify-center items-center mb-2">
                     <img
                       src={product.image}
@@ -81,11 +77,11 @@ const TableProduct = ({
                     />
                   </div>
                 </td>
-                <td>{product.name}</td>
-                <td>{product.price}</td>
-                <td>{product.category}</td>
-                <td>{product.brand}</td>
-                <td>
+                <td data-th="tên">{product.name}</td>
+                <td data-th="giá">{product.price}</td>
+                <td data-th="danh mục">{product.category}</td>
+                <td data-th="nhãn hiệu">{product.brand}</td>
+                <td data-th="chỉnh sửa">
                   <div className="flex items-center justify-center gap-x-3">
                     <ActionEdit
                       onClick={() => navigate(`/admin/product/${product._id}`)}

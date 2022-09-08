@@ -66,6 +66,7 @@ const SidebarContainer = styled.div`
   }
   .cart-btn-wrapper {
     margin: 2rem auto;
+    display:flex
   }
   @media screen and (min-width: 992px) {
     .sidebar {

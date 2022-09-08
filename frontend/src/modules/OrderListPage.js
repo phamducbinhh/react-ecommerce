@@ -13,12 +13,6 @@ import Heading from "../Layout/Heading";
 const Wrapper = styled.div`
   min-height: 100vh;
   padding: 40px;
-  thead {
-    height: 50px;
-  }
-  tr {
-    height: 70px;
-  }
 `;
 const OrderListPage = () => {
   const { state } = useStore();
