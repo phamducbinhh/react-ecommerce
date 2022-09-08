@@ -23,11 +23,6 @@ const Wrapper = styled.div`
   .text-bold {
     background-color: var(--clr-primary-7);
   }
-  @media only screen and (max-width: 740px) {
-    .add-product {
-      display: none;
-    }
-  }
 `;
 const ProductManage = () => {
   const { state } = useStore();
