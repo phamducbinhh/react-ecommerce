@@ -4,6 +4,8 @@
 
 *Chức năng Admin : -Quản lý sản phẩm, -Quản lý người dùng, -Quản lý đơn hàng -Thêm sửa xóa update...
 
+*tk admin : admin@example.com / 123456
+
 Giỏ hàng đầy đủ tính năng
 
 Đánh giá và xếp hạng sản phẩm
